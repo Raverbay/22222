@@ -30,7 +30,7 @@ Checkout is an order-request flow, not a live payment gateway. Product and edito
 
 ## Deployment
 
-Upload the contents of this repository root to the `Raverbay/1111` repository and hard-refresh the browser after deployment.
+Upload the contents of this repository root to the `Raverbay/22222` repository and hard-refresh the browser after deployment.
 
 ## QA
 
@@ -40,4 +40,4 @@ Upload the contents of this repository root to the `Raverbay/1111` repository an
 - Duplicate legacy runtime files removed
 - Header/menu layer order consolidated
 - Circular mobile menu styling removed
-- Cache versions aligned to V36
+- Cache versions aligned to V52.6
