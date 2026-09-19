@@ -1,2 +1,104 @@
 <!DOCTYPE html>
-<html lang="it"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>Collections — Flip&amp;Co</title><link href="styles.css?v=36" rel="stylesheet"/><meta content="Scopri le collection Flip&amp;Co: nuovi arrivi, sneakers, street edit, kids e icone." name="description"/><meta content="#F4F1EA" name="theme-color"/></head><body><div id="siteHeader"></div><main><section class="page-hero wrap"><div class="section-line"><span>01 / COLLECTIONS</span><span>THE FLIP&amp;CO EDIT</span></div><h1>Il nostro<br/><i>edit.</i></h1><p>Piccole selezioni costruite per orientarti tra nuovi arrivi, icone, tecnica, kids e sneakers.</p></section><section class="collection-list wrap" id="collectionsList"></section></main><div id="siteFooter"></div><div id="cartRoot"></div><script src="js/data.js"></script><script src="js/commerce.js"></script><script src="js/site.js"></script><script src="js/collections.js"></script></body></html>
+<html lang="it">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Collections — Flip&amp;Co</title>
+<link href="styles.css?v=51.4" rel="stylesheet"/>
+<meta content="La selezione Flip&amp;Co e tutti i prodotti disponibili online." name="description"/>
+<meta content="#F4F1EA" name="theme-color"/>
+<style>
+  .c514-page{padding-bottom:0}
+  .c514-selection{padding:56px 0 84px;background:#f4f1ea}
+  .c514-head{display:flex;justify-content:space-between;gap:32px;align-items:flex-end;margin-bottom:34px}
+  .c514-kicker{font-family:var(--mono,monospace);font-size:11px;letter-spacing:.18em;text-transform:uppercase;margin-bottom:14px}
+  .c514-kicker span:first-child{color:#f05a3c}
+  .c514-head h1{font-size:clamp(58px,9vw,126px);line-height:.82;letter-spacing:-.065em;margin:0;font-weight:500}
+  .c514-head h1 em{font-family:var(--serif,Georgia,serif);font-weight:400;color:#f05a3c}
+  .c514-head-copy{max-width:360px;font-size:17px;line-height:1.45;color:#666;margin-bottom:4px}
+  .c514-carousel{position:relative}
+  .c514-viewport{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;padding:0 0 10px;scrollbar-width:none}
+  .c514-viewport::-webkit-scrollbar{display:none}
+  .c514-card{flex:0 0 min(72vw,430px);scroll-snap-align:start;color:inherit;text-decoration:none}
+  .c514-image{position:relative;background:#ebe9e3;aspect-ratio:4/5;overflow:hidden}
+  .c514-image img{width:100%;height:100%;object-fit:cover;display:block}
+  .c514-meta{display:flex;justify-content:space-between;gap:16px;padding-top:13px;font-size:15px}
+  .c514-meta small{display:block;font-family:var(--mono,monospace);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#777;margin-bottom:6px}
+  .c514-meta strong{font-size:18px;font-weight:500}
+  .c514-price{white-space:nowrap}
+  .c514-controls{display:flex;align-items:center;gap:12px;margin-top:22px}
+  .c514-arrow{width:44px;height:44px;border:1px solid #111;background:transparent;font-size:18px;cursor:pointer}
+  .c514-progress{height:1px;background:#c9c6bf;flex:1;position:relative}
+  .c514-progress i{position:absolute;left:0;top:0;height:1px;background:#f05a3c;width:25%;transition:width .25s}
+  .c514-index{font-family:var(--mono,monospace);font-size:10px;letter-spacing:.12em;min-width:58px;text-align:right}
+  .c514-all{padding:82px 0 110px;background:#fff}
+  .c514-all-head{display:flex;justify-content:space-between;align-items:flex-end;border-top:1px solid #111;padding-top:18px;margin-bottom:36px}
+  .c514-all-head h2{font-size:clamp(38px,6vw,76px);line-height:.9;letter-spacing:-.05em;margin:0;font-weight:500}
+  .c514-all-head h2 em{font-family:var(--serif,Georgia,serif);font-weight:400}
+  .c514-count{font-family:var(--mono,monospace);font-size:11px;letter-spacing:.14em;color:#f05a3c}
+  .c514-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:46px 18px}
+  .c514-product{color:inherit;text-decoration:none;min-width:0}
+  .c514-product-image{background:#eee;aspect-ratio:4/5;overflow:hidden;position:relative}
+  .c514-product-image img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s ease}
+  .c514-product:hover .c514-product-image img{transform:scale(1.025)}
+  .c514-product-meta{padding-top:12px;display:flex;justify-content:space-between;gap:10px}
+  .c514-product-meta small{display:block;font-family:var(--mono,monospace);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:#777;margin-bottom:6px}
+  .c514-product-meta b{display:block;font-size:17px;font-weight:500}
+  .c514-product-price{white-space:nowrap;font-size:15px}
+  .c514-product-foot{display:flex;justify-content:space-between;margin-top:8px;font-family:var(--mono,monospace);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:#777}
+  @media(max-width:760px){
+    .c514-selection{padding:38px 0 62px}
+    .c514-head{display:block;margin-bottom:24px}
+    .c514-head h1{font-size:62px}
+    .c514-head-copy{margin-top:18px;font-size:16px}
+    .c514-card{flex-basis:78vw}
+    .c514-all{padding:62px 0 76px}
+    .c514-all-head{margin-bottom:24px}
+    .c514-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:34px 14px}
+    .c514-product-meta{display:block}
+    .c514-product-price{margin-top:8px}
+  }
+</style>
+</head>
+<body>
+<div id="siteHeader"></div>
+<main class="c514-page">
+<section class="c514-selection" id="selection">
+  <div class="wrap">
+    <div class="c514-head">
+      <div>
+        <div class="c514-kicker"><span>01 / OUR SELECTION</span><span> &nbsp; CURATED BY FLIP&amp;CO</span></div>
+        <h1>La nostra<br/><em>selezione.</em></h1>
+      </div>
+      <p class="c514-head-copy">I pezzi che raccontano il mondo Flip&amp;Co. Una selezione ragionata, poi tutto il resto.</p>
+    </div>
+    <div class="c514-carousel">
+      <div class="c514-viewport" id="selectionViewport" aria-label="La nostra selezione"></div>
+      <div class="c514-controls">
+        <button class="c514-arrow" id="selectionPrev" type="button" aria-label="Precedente">←</button>
+        <button class="c514-arrow" id="selectionNext" type="button" aria-label="Successivo">→</button>
+        <div class="c514-progress"><i id="selectionProgress"></i></div>
+        <span class="c514-index" id="selectionIndex">01 / 04</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="c514-all" id="all-products">
+  <div class="wrap">
+    <div class="c514-all-head">
+      <h2>Tutti i<br/><em>prodotti.</em></h2>
+      <span class="c514-count" id="allCount">00 PEZZI</span>
+    </div>
+    <div class="c514-grid" id="allProducts"></div>
+  </div>
+</section>
+</main>
+<div id="siteFooter"></div>
+<div id="cartRoot"></div>
+<script src="js/data.js"></script>
+<script src="js/commerce.js"></script>
+<script src="js/site.js"></script>
+<script src="js/collections.js?v=51.4"></script>
+</body>
+</html>
