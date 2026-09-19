@@ -1,3 +1,9 @@
+## V38 — Hero Showcase
+- Converted the hero editorial panel into a full-bleed background gallery.
+- Added a fourth local editorial slide from the supplied Flip&Co image.
+- Added mobile-specific overlays/readability and reduced-motion handling.
+- Preserved the existing hero controls, links and autoplay behavior.
+
 ## V37 — Production Polish
 - Removed visible demo labels from customer-facing editorial copy.
 - Preserved V36 navigation, commerce and data architecture.
