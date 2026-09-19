@@ -25,7 +25,7 @@ const syncHeaderState=()=>{
   if(!headerEl)return;
   headerEl.classList.toggle('is-scrolled',window.scrollY>18);
 };
-syncHeaderState();
+requestAnimationFrame(syncHeaderState);
 window.addEventListener('scroll',syncHeaderState,{passive:true});
 $('#siteFooter').insertAdjacentHTML('afterend',`<div class="cookie-bar" id="cookieBar"><div><b>PRIVACY / COOKIE</b><span>Usiamo cookie tecnici necessari al funzionamento del sito e del bag. Nessun tracciamento marketing attivo in questa versione.</span></div><div><a href="privacy.html">PRIVACY ↗</a><button id="cookieOk">OK</button></div></div>`);
 const cookie=$('#cookieBar');if(localStorage.getItem('flipco_cookie_ok')==='1')cookie.remove();else $('#cookieOk').onclick=()=>{localStorage.setItem('flipco_cookie_ok','1');cookie.remove()};
