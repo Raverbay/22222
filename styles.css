@@ -1050,3 +1050,106 @@ body{font-family:'Instrument Sans',Arial,sans-serif!important;background:var(--p
   .footer-bottom span:nth-child(2){text-align:center!important}
   .footer-bottom span:last-child{text-align:right!important}
 }
+
+
+/* =========================================================
+   V45 — SHOP ARCHITECTURE
+   Category → Subcategory → optional filters.
+   ========================================================= */
+
+.shop-hero{padding-bottom:clamp(70px,10vw,130px)}
+.shop-hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:8vw;align-items:end;padding-top:55px}
+.shop-hero h1{font-size:clamp(76px,11vw,180px);line-height:.72;letter-spacing:-.09em;margin:0}
+.shop-hero-copy{max-width:470px;padding-bottom:10px}
+.shop-hero-copy p{font-size:clamp(20px,2vw,29px);line-height:1.08;letter-spacing:-.035em;margin:0 0 28px}
+.shop-hero-note{font:9px 'DM Mono',monospace;letter-spacing:.11em;text-transform:uppercase;color:var(--muted)}
+
+.shop-browser{border-top:1px solid var(--ink)}
+.shop-audience{display:flex;gap:0;border-bottom:1px solid var(--ink)}
+.shop-audience button,.shop-category button,.shop-subcategory button{
+  appearance:none;border:0;background:none;color:var(--ink);cursor:pointer;
+  font:10px 'DM Mono',monospace;letter-spacing:.12em;text-transform:uppercase;
+  padding:18px 25px 17px 0;margin-right:25px;position:relative;
+}
+.shop-audience button:after,.shop-category button:after,.shop-subcategory button:after{
+  content:"";position:absolute;left:0;right:25px;bottom:-1px;height:2px;background:var(--ink);
+  transform:scaleX(0);transform-origin:left;transition:transform .25s ease;
+}
+.shop-audience button.active:after,.shop-category button.active:after,.shop-subcategory button.active:after,
+.shop-audience button:hover:after,.shop-category button:hover:after,.shop-subcategory button:hover:after{transform:scaleX(1)}
+
+.shop-category-row,.shop-subcategory-row{
+  display:grid;grid-template-columns:125px 1fr;align-items:start;
+  border-bottom:1px solid var(--line);
+}
+.shop-filter-label{font:9px 'DM Mono',monospace;letter-spacing:.13em;color:var(--muted);padding-top:21px}
+.shop-category,.shop-subcategory{display:flex;flex-wrap:wrap;align-items:center}
+.shop-subcategory-row[hidden]{display:none}
+
+.shop-more-filters{border-bottom:1px solid var(--line)}
+.shop-more-filters summary{
+  list-style:none;cursor:pointer;display:flex;justify-content:space-between;
+  padding:18px 0;font:9px 'DM Mono',monospace;letter-spacing:.13em;color:var(--muted)
+}
+.shop-more-filters summary::-webkit-details-marker{display:none}
+.shop-more-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;padding:10px 0 28px}
+.shop-more-grid small{display:block;font:9px 'DM Mono',monospace;letter-spacing:.13em;color:var(--muted);margin-bottom:15px}
+.shop-option-list{display:flex;flex-wrap:wrap;gap:8px}
+.shop-option-list button{
+  border:1px solid var(--line);background:none;padding:9px 11px;
+  font:9px 'DM Mono',monospace;letter-spacing:.08em;cursor:pointer
+}
+.shop-option-list button.active,.shop-option-list button:hover{background:var(--ink);border-color:var(--ink);color:#fff}
+
+.shop-results-bar{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:18px 0 20px;font:9px 'DM Mono',monospace;letter-spacing:.13em
+}
+.shop-results-bar button{border:0;background:none;color:var(--muted);font:inherit;letter-spacing:inherit;cursor:pointer}
+.shop-results-bar button:hover{color:var(--ink)}
+
+.shop-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:70px 12px;padding-top:30px;padding-bottom:150px}
+.shop-grid .shop-card{min-width:0}
+.shop-img{position:relative;background:#fff;aspect-ratio:3/4;overflow:hidden}
+.shop-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .8s var(--ease)}
+.shop-card:hover .shop-img img{transform:scale(1.025)}
+.shop-img>span{position:absolute;top:12px;left:12px;font:9px 'DM Mono',monospace;letter-spacing:.1em;background:var(--paper);padding:7px 9px}
+.shop-img .sale-dot{position:absolute;right:12px;top:12px;font:9px 'DM Mono',monospace;letter-spacing:.1em;background:var(--ink);color:#fff;padding:7px 9px}
+.shop-meta{display:grid;grid-template-columns:1fr auto;gap:18px;border-top:1px solid var(--ink);padding-top:11px;margin-top:10px}
+.shop-meta small,.shop-meta b,.shop-meta strong{display:block}
+.shop-meta small{font:9px 'DM Mono',monospace;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+.shop-meta b{font-size:16px;margin-top:5px;font-weight:600}
+.shop-meta strong{font:11px 'DM Mono',monospace;white-space:nowrap}
+.shop-meta del{color:var(--muted)}
+
+.empty-grid{grid-column:1/-1;min-height:320px;border-top:1px solid var(--ink);display:flex;flex-direction:column;justify-content:center;gap:12px}
+.empty-grid strong{font-size:clamp(36px,5vw,70px);line-height:.9;letter-spacing:-.06em}
+.empty-grid span{font:10px 'DM Mono',monospace;color:var(--muted);letter-spacing:.08em}
+
+.shop-store-note{
+  border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);
+  padding:80px 0;display:flex;justify-content:space-between;align-items:end;gap:40px;margin-bottom:100px
+}
+.shop-store-note>div span{font:9px 'DM Mono',monospace;letter-spacing:.13em;color:var(--muted)}
+.shop-store-note h2{font-size:clamp(55px,7vw,105px);line-height:.75;letter-spacing:-.08em;margin:22px 0 0}
+.shop-store-note h2 i{font-style:normal;color:#77736d}
+
+@media (max-width:760px){
+  .shop-hero-grid{display:block;padding-top:38px}
+  .shop-hero h1{font-size:clamp(72px,20vw,120px)}
+  .shop-hero-copy{margin-top:45px}
+  .shop-audience{overflow:auto;scrollbar-width:none}
+  .shop-audience::-webkit-scrollbar{display:none}
+  .shop-audience button{flex:0 0 auto;padding-right:18px;margin-right:18px}
+  .shop-category-row,.shop-subcategory-row{display:block}
+  .shop-filter-label{padding:17px 0 0}
+  .shop-category,.shop-subcategory{overflow:auto;flex-wrap:nowrap;scrollbar-width:none;padding-bottom:1px}
+  .shop-category::-webkit-scrollbar,.shop-subcategory::-webkit-scrollbar{display:none}
+  .shop-category button,.shop-subcategory button{flex:0 0 auto;padding-top:15px;padding-bottom:15px}
+  .shop-more-grid{grid-template-columns:1fr;gap:25px}
+  .shop-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:42px 8px;padding-bottom:90px}
+  .shop-meta{display:block}
+  .shop-meta strong{margin-top:8px}
+  .shop-store-note{display:block;padding:60px 0;margin-bottom:70px}
+  .shop-store-note .arrow{margin-top:35px}
+}

@@ -1,2 +1,92 @@
 <!DOCTYPE html>
-<html lang="it"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><meta content="Scopri l'Online Edit di Flip&amp;Co: Uomo, Donna, Kids, sneakers, capi e accessori selezionati a Cagliari." name="description"/><title>Shop — Flip&amp;Co</title><link href="styles.css?v=36" rel="stylesheet"/><meta content="#F4F1EA" name="theme-color"/></head><body data-page="shop"><div id="siteHeader"></div><main><section class="page-hero wrap"><div class="section-line"><span>01 / SHOP</span><span>ONLINE + STORE</span></div><h1>La selezione<br/><i>online.</i></h1><p>Una selezione essenziale: sneakers, streetwear e Kids. Disponibilità e prezzi da confermare prima del attivazione.</p></section><section class="shop-bar wrap" id="shopFilters"></section><section class="shop-grid wrap" id="productGrid"></section></main><div id="siteFooter"></div><div id="cartRoot"></div><script src="js/data.js"></script><script src="js/commerce.js"></script><script src="js/site.js"></script><script src="js/shop.js"></script></body></html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="La selezione Flip&Co: Uomo, Donna, Kids, sneakers, abbigliamento, borse e accessori. Online è una selezione, in store trovi molto di più.">
+  <title>Shop — Flip&Co</title>
+  <link href="styles.css?v=45" rel="stylesheet">
+  <meta content="#F4F1EA" name="theme-color">
+</head>
+<body data-page="shop">
+  <div id="siteHeader"></div>
+
+  <main>
+    <section class="page-hero shop-hero wrap">
+      <div class="section-line">
+        <span>01 / SHOP</span>
+        <span>ONLINE + STORE</span>
+      </div>
+
+      <div class="shop-hero-grid">
+        <div>
+          <h1>La selezione<br><i>online.</i></h1>
+        </div>
+        <div class="shop-hero-copy">
+          <p>Una selezione curata di ciò che trovi da Flip&Co. Parti dal tuo mondo, poi entra nella categoria.</p>
+          <span class="shop-hero-note">Online è una selezione. In store trovi molto di più.</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="shop-browser wrap" aria-label="Navigazione catalogo">
+      <div class="shop-audience" id="shopAudience"></div>
+
+      <div class="shop-category-row">
+        <div class="shop-filter-label">CATEGORIA</div>
+        <div class="shop-category" id="shopCategories"></div>
+      </div>
+
+      <div class="shop-subcategory-row" id="shopSubcategoryRow">
+        <div class="shop-filter-label">SOTTOCATEGORIA</div>
+        <div class="shop-subcategory" id="shopSubcategories"></div>
+      </div>
+
+      <details class="shop-more-filters">
+        <summary>
+          <span>ALTRI FILTRI</span>
+          <span>+</span>
+        </summary>
+        <div class="shop-more-grid">
+          <div>
+            <small>BRAND</small>
+            <div id="shopBrands" class="shop-option-list"></div>
+          </div>
+          <div>
+            <small>PREZZO</small>
+            <div id="shopPrices" class="shop-option-list">
+              <button type="button" data-price="all">Tutti</button>
+              <button type="button" data-price="0-100">Fino a €100</button>
+              <button type="button" data-price="100-200">€100 — €200</button>
+              <button type="button" data-price="200-9999">Oltre €200</button>
+            </div>
+          </div>
+        </div>
+      </details>
+
+      <div class="shop-results-bar">
+        <span id="shopCount">00 PIECES</span>
+        <button id="clearFilter" type="button">RESET ↺</button>
+      </div>
+    </section>
+
+    <section class="shop-grid wrap" id="productGrid"></section>
+
+    <section class="shop-store-note wrap">
+      <div>
+        <span>IN STORE</span>
+        <h2>Hai visto qualcosa?<br><i>Vieni a provarlo.</i></h2>
+      </div>
+      <a class="arrow" href="https://wa.me/393661087819" target="_blank" rel="noopener">SCRIVICI SU WHATSAPP ↗</a>
+    </section>
+  </main>
+
+  <div id="siteFooter"></div>
+  <div id="cartRoot"></div>
+
+  <script src="js/data.js"></script>
+  <script src="js/commerce.js"></script>
+  <script src="js/site.js"></script>
+  <script src="js/shop.js?v=45"></script>
+</body>
+</html>
