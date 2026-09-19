@@ -3,83 +3,126 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="La selezione Flip&Co: Uomo, Donna, Kids, sneakers, abbigliamento, borse e accessori. Online è una selezione, in store trovi molto di più.">
+  <meta name="description" content="Flip&Co Online Edit — Uomo, Donna, Kids. Sneakers, abbigliamento, borse e accessori selezionati a Cagliari.">
   <title>Shop — Flip&Co</title>
-  <link href="styles.css?v=45" rel="stylesheet">
-  <meta content="#F4F1EA" name="theme-color">
+  <link href="styles.css?v=46" rel="stylesheet">
+  <meta content="#F1EEE8" name="theme-color">
 </head>
 <body data-page="shop">
   <div id="siteHeader"></div>
 
-  <main>
-    <section class="page-hero shop-hero wrap">
+  <main class="shop-v46">
+    <section class="v46-shop-hero wrap">
       <div class="section-line">
         <span>01 / SHOP</span>
-        <span>ONLINE + STORE</span>
+        <span>FLIP&CO · CAGLIARI</span>
       </div>
 
-      <div class="shop-hero-grid">
+      <div class="v46-hero-grid">
+        <div class="v46-hero-title">
+          <span>Quello che</span>
+          <i>ci piace.</i>
+        </div>
+        <div class="v46-hero-side">
+          <p>Non tutto il negozio entra online. Qui trovi la nostra selezione: pochi pezzi, scelti bene.</p>
+          <a class="arrow" href="#catalogo">ENTRA NELLA SELEZIONE ↓</a>
+        </div>
+      </div>
+
+      <div class="v46-worlds" id="worlds">
+        <button type="button" class="is-active" data-audience="all">
+          <span>00</span><b>ALL</b><em>TUTTA LA SELEZIONE</em>
+        </button>
+        <button type="button" data-audience="Uomo">
+          <span>01</span><b>UOMO</b><em>EVERYDAY / STREET</em>
+        </button>
+        <button type="button" data-audience="Donna">
+          <span>02</span><b>DONNA</b><em>STYLE / OBJECTS</em>
+        </button>
+        <button type="button" data-audience="Kids">
+          <span>03</span><b>KIDS</b><em>SMALL / BIG ENERGY</em>
+        </button>
+      </div>
+    </section>
+
+    <section class="v46-catalog wrap" id="catalogo">
+      <div class="v46-catalog-top">
         <div>
-          <h1>La selezione<br><i>online.</i></h1>
+          <span class="eyebrow">LA SELEZIONE</span>
+          <h1 id="catalogTitle">Tutto, per ora.</h1>
         </div>
-        <div class="shop-hero-copy">
-          <p>Una selezione curata di ciò che trovi da Flip&Co. Parti dal tuo mondo, poi entra nella categoria.</p>
-          <span class="shop-hero-note">Online è una selezione. In store trovi molto di più.</span>
+        <div class="v46-count-wrap">
+          <span id="shopCount">00</span>
+          <small>PIECES ONLINE</small>
         </div>
       </div>
-    </section>
 
-    <section class="shop-browser wrap" aria-label="Navigazione catalogo">
-      <div class="shop-audience" id="shopAudience"></div>
-
-      <div class="shop-category-row">
-        <div class="shop-filter-label">CATEGORIA</div>
-        <div class="shop-category" id="shopCategories"></div>
+      <div class="v46-category-bar">
+        <div class="v46-category-scroll" id="shopCategories"></div>
+        <button class="v46-filter-open" id="openFilters" type="button">
+          FILTRI <span>+</span>
+        </button>
       </div>
 
-      <div class="shop-subcategory-row" id="shopSubcategoryRow">
-        <div class="shop-filter-label">SOTTOCATEGORIA</div>
-        <div class="shop-subcategory" id="shopSubcategories"></div>
-      </div>
+      <div class="v46-subcategory" id="shopSubcategories" hidden></div>
 
-      <details class="shop-more-filters">
-        <summary>
-          <span>ALTRI FILTRI</span>
-          <span>+</span>
-        </summary>
-        <div class="shop-more-grid">
-          <div>
-            <small>BRAND</small>
-            <div id="shopBrands" class="shop-option-list"></div>
-          </div>
-          <div>
-            <small>PREZZO</small>
-            <div id="shopPrices" class="shop-option-list">
-              <button type="button" data-price="all">Tutti</button>
-              <button type="button" data-price="0-100">Fino a €100</button>
-              <button type="button" data-price="100-200">€100 — €200</button>
-              <button type="button" data-price="200-9999">Oltre €200</button>
-            </div>
-          </div>
+      <div class="v46-active-filters" id="activeFilters"></div>
+
+      <div class="v46-grid" id="productGrid"></div>
+
+      <div class="v46-end">
+        <div>
+          <span class="eyebrow">ONLINE + STORE</span>
+          <h2>Hai trovato<br><i>il tuo pezzo?</i></h2>
         </div>
-      </details>
-
-      <div class="shop-results-bar">
-        <span id="shopCount">00 PIECES</span>
-        <button id="clearFilter" type="button">RESET ↺</button>
+        <p>Online vedi una selezione. In negozio trovi più scelta, più taglie e qualcuno che ti aiuta a costruire il look.</p>
+        <a class="arrow" href="https://wa.me/393661087819" target="_blank" rel="noopener">CHIEDI DISPONIBILITÀ SU WHATSAPP ↗</a>
       </div>
-    </section>
-
-    <section class="shop-grid wrap" id="productGrid"></section>
-
-    <section class="shop-store-note wrap">
-      <div>
-        <span>IN STORE</span>
-        <h2>Hai visto qualcosa?<br><i>Vieni a provarlo.</i></h2>
-      </div>
-      <a class="arrow" href="https://wa.me/393661087819" target="_blank" rel="noopener">SCRIVICI SU WHATSAPP ↗</a>
     </section>
   </main>
+
+  <aside class="v46-filter-drawer" id="filterDrawer" aria-hidden="true">
+    <div class="v46-filter-backdrop" id="filterBackdrop"></div>
+    <div class="v46-filter-panel">
+      <div class="v46-filter-head">
+        <span>FILTRA LA SELEZIONE</span>
+        <button type="button" id="closeFilters">CHIUDI ×</button>
+      </div>
+
+      <div class="v46-filter-block">
+        <small>BRAND</small>
+        <div id="shopBrands"></div>
+      </div>
+
+      <div class="v46-filter-block">
+        <small>PREZZO</small>
+        <div id="shopPrices"></div>
+      </div>
+
+      <div class="v46-filter-foot">
+        <button type="button" id="resetFilters">RESET</button>
+        <button type="button" class="button dark" id="applyFilters">VEDI LA SELEZIONE</button>
+      </div>
+    </div>
+  </aside>
+
+  <div class="v46-quick" id="quickAdd" aria-hidden="true">
+    <div class="v46-quick-backdrop" id="quickBackdrop"></div>
+    <div class="v46-quick-panel">
+      <button class="v46-quick-close" id="quickClose" type="button">×</button>
+      <div class="v46-quick-image"><img id="quickImage" alt=""></div>
+      <div class="v46-quick-info">
+        <small id="quickBrand"></small>
+        <h2 id="quickName"></h2>
+        <strong id="quickPrice"></strong>
+        <p id="quickNote"></p>
+        <div class="v46-size-title"><span>TAGLIA</span><span id="quickSizeHint">Seleziona una taglia</span></div>
+        <div class="v46-sizes" id="quickSizes"></div>
+        <button class="button dark full" id="quickAddButton" type="button" disabled>AGGIUNGI AL BAG</button>
+        <a class="v46-product-link" id="quickProductLink" href="#">VEDI IL PRODOTTO ↗</a>
+      </div>
+    </div>
+  </div>
 
   <div id="siteFooter"></div>
   <div id="cartRoot"></div>
@@ -87,6 +130,6 @@
   <script src="js/data.js"></script>
   <script src="js/commerce.js"></script>
   <script src="js/site.js"></script>
-  <script src="js/shop.js?v=45"></script>
+  <script src="js/shop.js?v=46"></script>
 </body>
 </html>
