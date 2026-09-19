@@ -532,3 +532,75 @@ body,.flip29-home{font-family:var(--display);background:var(--paper);color:var(-
     right:20px!important;
   }
 }
+
+
+/* =========================================================
+   V41 — FLIP IDENTITY
+   Less template. More Flip&Co.
+   ========================================================= */
+:root{
+  --flip-accent:#ff4b3e;
+  --flip-accent-dark:#d9362c;
+  --flip-ink:#11110f;
+  --flip-paper:#f3f0e9;
+}
+.flip29-home{background:var(--flip-paper)}
+.flip29-home ::selection{background:var(--flip-accent);color:#fff}
+.f29-hero{background:var(--flip-paper);grid-template-columns:1.08fr .92fr}
+.f29-hero-left{padding:26px clamp(20px,4vw,62px) 24px}
+.f29-overline{font-size:9px;letter-spacing:.18em}
+.f29-overline span:first-child{position:relative;padding-left:16px}
+.f29-overline span:first-child:before{content:"";width:7px;height:7px;border-radius:50%;background:var(--flip-accent);position:absolute;left:0;top:50%;transform:translateY(-50%)}
+.f29-hero-title{font-size:clamp(86px,11.8vw,196px);line-height:.72;letter-spacing:-.095em;margin-top:7vh}
+.f29-hero-title span:nth-child(2){margin-left:-.035em}
+.f29-hero-title em{color:var(--flip-accent);font-size:1.04em;transform:translateX(10%)}
+.f29-hero-lead{font-size:clamp(17px,1.6vw,23px);line-height:1.18;max-width:520px;letter-spacing:-.025em}
+.f29-btn{background:var(--flip-accent);border-color:var(--flip-accent);border-radius:0;padding:18px 21px}
+.f29-btn:hover{background:var(--flip-accent-dark);border-color:var(--flip-accent-dark);transform:translateY(-2px) rotate(-.4deg)}
+.f29-textlink{border-bottom-color:var(--flip-accent)}
+.f29-hero-meta{border-top:1px solid rgba(17,17,15,.25)}
+.f29-showcase{min-height:720px;background:#111}
+.f29-showcase:before{content:"FLIP / CAGLIARI";position:absolute;z-index:5;left:20px;top:50%;transform:translateY(-50%) rotate(-90deg);transform-origin:left center;color:#fff;font:8px var(--mono);letter-spacing:.18em;opacity:.8;pointer-events:none}
+.f29-showcase-top{letter-spacing:.16em}
+.f29-showcase-controls button{border:1px solid rgba(255,255,255,.65);width:42px;height:42px;transition:background .25s,color .25s}
+.f29-showcase-controls button:hover{background:var(--flip-accent);border-color:var(--flip-accent)}
+.f29-showcase-controls i.active{background:var(--flip-accent);border-color:var(--flip-accent)}
+.f29-ticker{background:var(--flip-accent)!important;color:#fff!important;border:0!important;font-weight:500}
+.f29-ticker b{color:#fff!important}
+.f29-label{letter-spacing:.16em}
+.f29-label span:first-child{color:var(--flip-accent)}
+.f31-campaign,.f32-journal,.f29-intro,.f29-tiles,.f29-story{position:relative}
+.f31-campaign:before,.f32-journal:before,.f29-intro:before,.f29-tiles:before,.f29-story:before{content:"";position:absolute;width:9px;height:9px;border-radius:50%;background:var(--flip-accent);left:max(18px,calc((100vw - 1440px)/2));top:0;transform:translateY(-50%)}
+.f31-campaign-head h2,.f32-journal-head h2,.f29-intro-grid h2,.f29-edit-head h2{letter-spacing:-.1em}
+.f31-campaign-head h2 em,.f32-journal-head h2 em,.f29-intro-grid h2 em,.f29-edit-head h2 em{color:var(--flip-accent)}
+.f29-finder{background:var(--flip-ink)!important}
+.f29-finder .f29-label span:first-child{color:var(--flip-accent)}
+.f29-finder-ui button{transition:background .2s,color .2s,border-color .2s,transform .2s}
+.f29-finder-ui button:hover{border-color:var(--flip-accent)!important;color:var(--flip-accent)!important;transform:translateY(-2px)}
+.f29-finder-ui button.active{background:var(--flip-accent)!important;border-color:var(--flip-accent)!important;color:#fff!important}
+.f29-brand-wall{background:#ded9d0}
+.f29-marquee{border-top:1px solid rgba(17,17,15,.25);border-bottom:1px solid rgba(17,17,15,.25)}
+.f29-marquee i{color:var(--flip-accent)}
+.f29-story-copy h2 em{color:var(--flip-accent)}
+.f29-story-image{position:relative}
+.f29-story-image:after{content:"FLIP&CO / 09124";position:absolute;right:12px;top:12px;background:var(--flip-accent);color:#fff;padding:8px 10px;font:8px var(--mono);letter-spacing:.12em}
+.f29-close{background:var(--flip-accent)!important;color:#fff!important}
+.f29-close .f29-label{color:#fff!important}
+.f29-close h2 em{color:#111!important}
+.f29-close .f29-btn-light{background:#111!important;color:#fff!important;border-color:#111!important}
+.footer{border-top:4px solid var(--flip-accent)}
+.footer small{color:var(--flip-accent)!important}
+.footer a:hover{color:var(--flip-accent)}
+@media(max-width:800px){
+ .f29-hero{display:block;min-height:100svh}
+ .f29-hero-left{min-height:68svh;padding:20px 20px 22px}
+ .f29-hero-title{font-size:clamp(72px,21vw,118px);margin-top:9vh}
+ .f29-hero-title em{transform:translateX(4%)}
+ .f29-hero-lead{max-width:90%;font-size:17px}
+ .f29-hero-meta{font-size:8px}
+ .f29-showcase{min-height:76svh}
+ .f29-showcase:before{display:none}
+ .f29-showcase-top{padding:13px 14px}
+ .f31-campaign:before,.f32-journal:before,.f29-intro:before,.f29-tiles:before,.f29-story:before{left:20px}
+ .f29-close h2{letter-spacing:-.075em}
+}
