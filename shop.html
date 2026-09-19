@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="description" content="Flip&Co Online Edit — Uomo, Donna, Kids. Sneakers, abbigliamento, borse e accessori selezionati a Cagliari.">
   <title>Shop — Flip&Co</title>
-  <link href="styles.css?v=54.1" rel="stylesheet">
+  <link href="styles.css?v=54.2" rel="stylesheet">
   <meta content="#F1EEE8" name="theme-color">
 
 <style id="flip-shop-v48-inline">
@@ -306,5 +306,16 @@
   <script src="js/commerce.js?v=54.1"></script>
   <script src="js/site.js?v=54.1"></script>
   <script src="js/shop.js?v=54.1"></script>
+
+<script id="flip-v542-menu-look-fix">
+document.addEventListener('DOMContentLoaded', function(){
+  document.querySelectorAll('a').forEach(function(a){
+    if ((a.textContent || '').trim().toLowerCase().includes('ti facciamo il look')) {
+      a.setAttribute('href','index.html#look');
+    }
+  });
+});
+</script>
+
 </body>
 </html>
