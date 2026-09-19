@@ -20,6 +20,13 @@ $('#siteFooter').innerHTML=`<footer class="footer"><div class="footer-main"><div
 $('#cartRoot').innerHTML=`<div class="cart-backdrop" id="cartBackdrop"></div><aside class="cart" id="cart"><div class="cart-top"><span>YOUR BAG</span><button id="closeCart">CHIUDI ×</button></div><div id="cartList" class="cart-list"></div><div class="cart-bottom"><div><span>SUBTOTAL</span><strong id="cartTotal">€ 0,00</strong></div><a class="button dark full" href="checkout.html">CHECKOUT <span>↗</span></a><small>Ritiro gratuito in store · modalità di consegna confermate al momento dell’ordine.</small></div></aside>`;
 }
 shell();
+const headerEl=document.querySelector('.header');
+const syncHeaderState=()=>{
+  if(!headerEl)return;
+  headerEl.classList.toggle('is-scrolled',window.scrollY>18);
+};
+syncHeaderState();
+window.addEventListener('scroll',syncHeaderState,{passive:true});
 $('#siteFooter').insertAdjacentHTML('afterend',`<div class="cookie-bar" id="cookieBar"><div><b>PRIVACY / COOKIE</b><span>Usiamo cookie tecnici necessari al funzionamento del sito e del bag. Nessun tracciamento marketing attivo in questa versione.</span></div><div><a href="privacy.html">PRIVACY ↗</a><button id="cookieOk">OK</button></div></div>`);
 const cookie=$('#cookieBar');if(localStorage.getItem('flipco_cookie_ok')==='1')cookie.remove();else $('#cookieOk').onclick=()=>{localStorage.setItem('flipco_cookie_ok','1');cookie.remove()};
 const body=document.body,mega=$('#mega'),search=$('#searchPanel'),ov=$('#navOverlay');
