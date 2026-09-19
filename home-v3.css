@@ -905,3 +905,120 @@ body,.flip29-home{font-family:var(--display);background:var(--paper);color:var(-
     height:48px!important;
   }
 }
+
+
+/* =========================================================
+   V43 — FLIP ORANGE
+   V42 composition + V41 warmth.
+   ========================================================= */
+:root{
+  --flip-orange:#f05a3c;
+  --flip-orange-dark:#c93d28;
+  --flip-paper:#f3f0e9;
+  --flip-black:#10100f;
+}
+.flip29-home ::selection{background:var(--flip-orange);color:#fff}
+
+/* Full-bleed hero retained */
+.f29-hero{background:#111!important}
+.f29-overline span:first-child:before{background:var(--flip-orange)!important}
+.f29-hero-title em{
+  color:var(--flip-orange)!important;
+}
+.f29-btn{
+  background:var(--flip-orange)!important;
+  border-color:var(--flip-orange)!important;
+}
+.f29-btn:hover{
+  background:#fff!important;
+  border-color:#fff!important;
+  color:#111!important;
+}
+.f29-textlink{border-bottom-color:var(--flip-orange)!important}
+.f29-showcase-top span:first-child{color:var(--flip-orange)!important}
+.f29-showcase-controls i.active{
+  background:var(--flip-orange)!important;
+  border-color:var(--flip-orange)!important;
+}
+
+/* The orange becomes a signature, not a theme wash */
+.f29-ticker{
+  background:var(--flip-orange)!important;
+  color:#fff!important;
+}
+.f29-ticker b{color:#fff!important}
+
+.f31-campaign-head h2 em,
+.f32-journal-head h2 em,
+.f29-intro-grid h2 em,
+.f29-edit-head h2 em{
+  color:var(--flip-orange)!important;
+}
+
+.f32-service-intro h2 em,
+.f32-service-grid b{
+  color:var(--flip-orange)!important;
+}
+
+.f29-finder{
+  background:var(--flip-black)!important;
+}
+.f29-finder .f29-label span:first-child{color:var(--flip-orange)!important}
+.f29-finder-ui button:hover{
+  background:var(--flip-orange)!important;
+  color:#fff!important;
+  border-color:var(--flip-orange)!important;
+}
+.f29-finder-ui button.active{
+  background:var(--flip-orange)!important;
+  color:#fff!important;
+  border-color:var(--flip-orange)!important;
+}
+
+.f29-brand-wall .f29-label span:first-child{color:var(--flip-orange)!important}
+.f29-brand-intro h2 em{color:var(--flip-orange)!important}
+.f29-marquee i{color:var(--flip-orange)!important}
+
+.f29-story-image:after{
+  background:var(--flip-orange)!important;
+}
+.f29-story-copy h2 em{color:var(--flip-orange)!important}
+.f29-story-copy .f29-btn-dark{
+  background:var(--flip-orange)!important;
+  border-color:var(--flip-orange)!important;
+}
+
+.f29-close{
+  background:var(--flip-orange)!important;
+}
+.f29-close h2 em{color:#111!important}
+
+.footer{
+  border-top:4px solid var(--flip-orange)!important;
+}
+.footer small{color:var(--flip-orange)!important}
+.footer a:hover{color:var(--flip-orange)!important}
+
+/* A few distinctive orange micro-signatures */
+.f31-campaign:before,
+.f32-journal:before,
+.f29-intro:before,
+.f29-tiles:before,
+.f29-story:before{
+  background:var(--flip-orange)!important;
+}
+
+/* Make CTA feel more like Flip than a generic fashion button */
+.f29-hero-actions .f29-btn i{
+  transition:transform .25s ease;
+}
+.f29-hero-actions .f29-btn:hover i{
+  transform:translate(4px,-4px);
+}
+
+@media(max-width:800px){
+  .f29-hero-title em{transform:translateX(2%)!important}
+  .f29-showcase-controls i.active{
+    background:var(--flip-orange)!important;
+  }
+}
