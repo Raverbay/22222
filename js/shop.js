@@ -1,23 +1,9 @@
 (async()=>{
-  const all = (await FLIPCO.load()).filter(p => FLIPCO.stock(p) > 0 || p.available === true);
-  const e = FLIPCO.esc;
-  const grid = document.querySelector('#productGrid');
+  const products=(await FLIPCO.load()).filter(p=>FLIPCO.stock(p)>0||p.available===true);
+  const $=s=>document.querySelector(s);
+  const esc=FLIPCO.esc;
 
-  const audienceOrder = ['all','Uomo','Donna','Kids'];
-
-  const categoryOrder = [
-    ['all','TUTTO'],
-    ['apparel','ABBIGLIAMENTO'],
-    ['sneaker','SNEAKERS'],
-    ['bag','BORSE'],
-    ['accessory','ACCESSORI'],
-    ['swimwear','COSTUMI']
-  ];
-
-  // Subcategories are intentionally derived from the current catalog.
-  // When a new product arrives, add its id here rather than creating
-  // empty categories in the storefront.
-  const subcategoryMap = {
+  const subcategoryMap={
     'NB9060-ERC':'Sneakers',
     'NB9060-ALP':'Sneakers',
     'BARROW-TEE-01':'T-shirt',
@@ -31,211 +17,227 @@
     'FLI-9FORTY-LAKERS':'Cappelli',
     'FLI-GCDS-BAND-MAN':'T-shirt',
     'FLI-GCDS-BERMUDA':'Shorts & Bermuda',
-    'FLI-PINKO-LOVE-BAG':'Shoulder Bags',
+    'FLI-PINKO-LOVE-BAG':'Borse',
     'FLI-BOMBER-BASEBALL-PROPAGANDA':'Giacche',
     'FLI-SPRYGROUND-BOXER':'Costumi',
     'FLI-BARROW-SOCKS-KIDS':'Calze'
   };
 
-  const subcategoryFor = p => subcategoryMap[p.id] || (
-    p.type === 'sneaker' ? 'Sneakers' :
-    p.type === 'bag' ? 'Borse' :
-    p.type === 'accessory' ? 'Accessori' :
-    p.type === 'swimwear' ? 'Costumi' :
-    'Abbigliamento'
+  const sub=p=>subcategoryMap[p.id]||(
+    p.type==='sneaker'?'Sneakers':
+    p.type==='bag'?'Borse':
+    p.type==='accessory'?'Accessori':
+    p.type==='swimwear'?'Costumi':'Abbigliamento'
   );
 
-  let params = new URLSearchParams(location.search);
-  let audience = params.get('audience') || 'all';
-  // Backward compatibility with the old shop URLs.
-  if (['Uomo','Donna','Kids'].includes(params.get('category'))) audience = params.get('category');
+  const categoryFor=p=>(
+    p.type==='sneaker'?'Sneakers':
+    p.type==='bag'?'Borse':
+    p.type==='accessory'?'Accessori':
+    p.type==='swimwear'?'Costumi':'Abbigliamento'
+  );
 
-  let state = {
-    audience,
-    category: params.get('type') || 'all',
-    subcategory: params.get('subcategory') || 'all',
-    brand: params.get('brand') || 'all',
-    price: params.get('price') || 'all'
+  let state={
+    audience:new URLSearchParams(location.search).get('audience')||'all',
+    category:new URLSearchParams(location.search).get('type')||'all',
+    subcategory:new URLSearchParams(location.search).get('subcategory')||'all',
+    brand:new URLSearchParams(location.search).get('brand')||'all',
+    price:new URLSearchParams(location.search).get('price')||'all'
   };
 
-  const card = p => `
-    <a class="shop-card" href="product.html?id=${encodeURIComponent(p.id)}">
-      <div class="shop-img">
-        <img src="${e(p.image || `assets/products/${p.art || ''}`)}"
-             alt="${e(p.brand)} ${e(p.name)}"
-             loading="lazy"
-             onerror="this.onerror=null;this.src='assets/products/${e(p.art || 'nb-9060-erc.svg')}'">
-        <span>${e(p.badge || 'SELECTED')}</span>
-        ${p.compareAt && Number(p.compareAt) > Number(p.price) ? '<i class="sale-dot">SALE</i>' : ''}
+  const matchesAudience=(p,a)=>{
+    if(a==='all') return true;
+    if(p.audience===a||p.category===a) return true;
+    return p.audience==='Unisex'&&(a==='Uomo'||a==='Donna');
+  };
+
+  const money=p=>FLIPCO.money(p.price);
+  const img=p=>p.image||`assets/products/${p.art||'nb-9060-erc.svg'}`;
+
+  function filtered(){
+    return products.filter(p=>{
+      if(!matchesAudience(p,state.audience))return false;
+      if(state.category!=='all'&&categoryFor(p)!==state.category)return false;
+      if(state.subcategory!=='all'&&sub(p)!==state.subcategory)return false;
+      if(state.brand!=='all'&&p.brand!==state.brand)return false;
+      if(state.price!=='all'){
+        const [a,b]=state.price.split('-').map(Number);
+        if(Number(p.price)<a||Number(p.price)>b)return false;
+      }
+      return true;
+    });
+  }
+
+  function categories(){
+    const base=products.filter(p=>matchesAudience(p,state.audience));
+    const order=['all','Abbigliamento','Sneakers','Borse','Accessori','Costumi'];
+    const present=[...new Set(base.map(categoryFor))];
+    return order.filter(x=>x==='all'||present.includes(x));
+  }
+
+  function renderWorlds(){
+    document.querySelectorAll('#worlds [data-audience]').forEach(b=>{
+      b.classList.toggle('is-active',b.dataset.audience===state.audience);
+    });
+  }
+
+  function renderCategories(){
+    const el=$('#shopCategories');
+    const cats=categories();
+    if(!cats.includes(state.category))state.category='all';
+    const labels={all:'TUTTO',Abbigliamento:'ABBIGLIAMENTO',Sneakers:'SNEAKERS',Borse:'BORSE',Accessori:'ACCESSORI',Costumi:'COSTUMI'};
+    el.innerHTML=cats.map(c=>`<button type="button" class="${state.category===c?'is-active':''}" data-category="${esc(c)}">${labels[c]}</button>`).join('');
+  }
+
+  function renderSubcategories(){
+    const el=$('#shopSubcategories');
+    const base=products.filter(p=>matchesAudience(p,state.audience)&&(state.category==='all'||categoryFor(p)===state.category));
+    const values=[...new Set(base.map(sub))];
+    if(state.subcategory!=='all'&&!values.includes(state.subcategory))state.subcategory='all';
+    if(!values.length){el.hidden=true;el.innerHTML='';return}
+    el.hidden=false;
+    el.innerHTML=`<button type="button" class="${state.subcategory==='all'?'is-active':''}" data-subcategory="all">TUTTE</button>`+
+      values.map(v=>`<button type="button" class="${state.subcategory===v?'is-active':''}" data-subcategory="${esc(v)}">${esc(v.toUpperCase())}</button>`).join('');
+  }
+
+  function renderFilterLists(){
+    const base=products.filter(p=>matchesAudience(p,state.audience)&&(state.category==='all'||categoryFor(p)===state.category));
+    const brands=[...new Set(base.map(p=>p.brand))].sort((a,b)=>a.localeCompare(b));
+    $('#shopBrands').innerHTML=[`<button data-brand="all" class="${state.brand==='all'?'is-active':''}">Tutti</button>`,...brands.map(b=>`<button data-brand="${esc(b)}" class="${state.brand===b?'is-active':''}">${esc(b)}</button>`)].join('');
+    const prices=[['all','Tutti'],['0-100','Fino a €100'],['100-200','€100 — €200'],['200-9999','Oltre €200']];
+    $('#shopPrices').innerHTML=prices.map(([v,l])=>`<button data-price="${v}" class="${state.price===v?'is-active':''}">${l}</button>`).join('');
+  }
+
+  function card(p,i){
+    const sale=p.compareAt&&Number(p.compareAt)>Number(p.price);
+    const availableSizes=(p.sizes||[]).filter(s=>!p.stock||p.stock[s]===undefined||Number(p.stock[s])>0);
+    const quick=availableSizes.length>0;
+    return `<article class="v46-card">
+      <a class="v46-card-image" href="product.html?id=${encodeURIComponent(p.id)}">
+        <img src="${esc(img(p))}" alt="${esc(p.brand)} ${esc(p.name)}" loading="${i<4?'eager':'lazy'}"
+          onerror="this.onerror=null;this.src='assets/products/${esc(p.art||'nb-9060-erc.svg')}'">
+        <span class="v46-card-no">${String(i+1).padStart(2,'0')}</span>
+        ${p.badge?`<span class="v46-card-badge">${esc(p.badge)}</span>`:''}
+        ${sale?`<span class="v46-card-sale">SALE</span>`:''}
+        ${quick?`<button class="v46-quick-trigger" type="button" data-quick="${esc(p.id)}">+ BAG</button>`:''}
+      </a>
+      <div class="v46-card-meta">
+        <div><small>${esc(p.brand)} · ${esc(sub(p))}</small><h2>${esc(p.name)}</h2></div>
+        <strong>${sale?`<del>${money({price:p.compareAt})}</del> `:''}${money(p)}</strong>
       </div>
-      <div class="shop-meta">
-        <div>
-          <small>${e(p.brand)} · ${e(subcategoryFor(p))}</small>
-          <b>${e(p.name)}</b>
-        </div>
-        <strong>${p.compareAt && Number(p.compareAt) > Number(p.price) ? `<del>${FLIPCO.money(p.compareAt)}</del> ` : ''}${FLIPCO.money(p.price)}</strong>
-      </div>
-    </a>`;
+      <div class="v46-card-foot"><span>${esc(p.color||'')}</span><a href="product.html?id=${encodeURIComponent(p.id)}">VEDI ↗</a></div>
+    </article>`;
+  }
 
-  const matchesAudience = (p, a) => {
-    if(a === 'all') return true;
-    if(p.audience === a || p.category === a) return true;
-    // Unisex adult accessories belong to Uomo and Donna, never Kids.
-    if(p.audience === 'Unisex' && (a === 'Uomo' || a === 'Donna')) return true;
-    return false;
-  };
+  function render(){
+    renderWorlds();renderCategories();renderSubcategories();renderFilterLists();
+    const list=filtered();
+    const title=state.audience==='all'?'Tutto, per ora.':`${state.audience}, scelto da noi.`;
+    $('#catalogTitle').textContent=title;
+    $('#shopCount').textContent=String(list.length).padStart(2,'0');
+    $('#productGrid').innerHTML=list.length?list.map(card).join(''):`<div class="v46-empty"><span>0 / ${state.audience.toUpperCase()}</span><h2>Qui non abbiamo<br><i>ancora niente.</i></h2><p>Prova un’altra categoria o guarda tutta la selezione.</p></div>`;
+    const active=[];
+    if(state.category!=='all')active.push(state.category);
+    if(state.subcategory!=='all')active.push(state.subcategory);
+    if(state.brand!=='all')active.push(state.brand);
+    if(state.price!=='all')active.push(state.price==='0-100'?'Fino a €100':state.price==='100-200'?'€100 — €200':'Oltre €200');
+    $('#activeFilters').innerHTML=active.map(x=>`<button type="button" data-clear="${esc(x)}">${esc(x)} ×</button>`).join('');
+    sync();
+  }
 
-  const renderAudience = () => {
-    const el = document.querySelector('#shopAudience');
-    el.innerHTML = audienceOrder.map(a => `
-      <button type="button" data-audience="${a}" class="${state.audience === a ? 'active' : ''}">
-        ${a === 'all' ? 'ALL' : a.toUpperCase()}
-      </button>
-    `).join('');
-  };
+  function sync(){
+    const q=new URLSearchParams();
+    if(state.audience!=='all')q.set('audience',state.audience);
+    if(state.category!=='all')q.set('type',state.category);
+    if(state.subcategory!=='all')q.set('subcategory',state.subcategory);
+    if(state.brand!=='all')q.set('brand',state.brand);
+    if(state.price!=='all')q.set('price',state.price);
+    history.replaceState({},'',`shop.html${q.toString()?'?'+q.toString():''}`);
+  }
 
-  const availableForAudience = () => all.filter(p => matchesAudience(p, state.audience));
+  // World navigation
+  $('#worlds').addEventListener('click',e=>{
+    const b=e.target.closest('[data-audience]');if(!b)return;
+    state={audience:b.dataset.audience,category:'all',subcategory:'all',brand:'all',price:'all'};
+    render();
+    $('#catalogo').scrollIntoView({behavior:'smooth',block:'start'});
+  });
 
-  const renderCategories = () => {
-    const base = availableForAudience();
-    const valid = categoryOrder.filter(([key]) => key === 'all' || base.some(p => p.type === key));
-    const el = document.querySelector('#shopCategories');
+  $('#shopCategories').addEventListener('click',e=>{
+    const b=e.target.closest('[data-category]');if(!b)return;
+    state.category=b.dataset.category;state.subcategory='all';state.brand='all';render();
+  });
 
-    if(!valid.some(([key]) => key === state.category)) state.category = 'all';
+  $('#shopSubcategories').addEventListener('click',e=>{
+    const b=e.target.closest('[data-subcategory]');if(!b)return;
+    state.subcategory=b.dataset.subcategory;render();
+  });
 
-    el.innerHTML = valid.map(([key,label]) => `
-      <button type="button" data-category="${key}" class="${state.category === key ? 'active' : ''}">
-        ${label}
-      </button>
-    `).join('');
-  };
+  $('#shopBrands').addEventListener('click',e=>{
+    const b=e.target.closest('[data-brand]');if(!b)return;
+    state.brand=b.dataset.brand;render();
+  });
 
-  const renderSubcategories = () => {
-    const base = availableForAudience().filter(p => state.category === 'all' || p.type === state.category);
-    const subs = [...new Set(base.map(subcategoryFor))];
+  $('#shopPrices').addEventListener('click',e=>{
+    const b=e.target.closest('[data-price]');if(!b)return;
+    state.price=b.dataset.price;render();
+  });
 
-    const row = document.querySelector('#shopSubcategoryRow');
-    const el = document.querySelector('#shopSubcategories');
-
-    if(!subs.length){
-      row.hidden = true;
-      state.subcategory = 'all';
-      return;
-    }
-
-    row.hidden = false;
-    if(state.subcategory !== 'all' && !subs.includes(state.subcategory)) state.subcategory = 'all';
-
-    el.innerHTML = [
-      `<button type="button" data-subcategory="all" class="${state.subcategory === 'all' ? 'active' : ''}">TUTTE</button>`,
-      ...subs.map(s => `<button type="button" data-subcategory="${e(s)}" class="${state.subcategory === s ? 'active' : ''}">${e(s.toUpperCase())}</button>`)
-    ].join('');
-  };
-
-  const renderBrands = () => {
-    const base = availableForAudience().filter(p => state.category === 'all' || p.type === state.category);
-    const brands = [...new Set(base.map(p => p.brand))].sort((a,b)=>a.localeCompare(b,'it'));
-    const el = document.querySelector('#shopBrands');
-
-    if(state.brand !== 'all' && !brands.includes(state.brand)) state.brand = 'all';
-
-    el.innerHTML = [
-      `<button type="button" data-brand="all" class="${state.brand === 'all' ? 'active' : ''}">Tutti</button>`,
-      ...brands.map(b => `<button type="button" data-brand="${e(b)}" class="${state.brand === b ? 'active' : ''}">${e(b)}</button>`)
-    ].join('');
-  };
-
-  const renderPrices = () => {
-    document.querySelectorAll('[data-price]').forEach(b =>
-      b.classList.toggle('active', b.dataset.price === state.price)
-    );
-  };
-
-  const filtered = () => {
-    let ps = all.filter(p => matchesAudience(p, state.audience));
-
-    if(state.category !== 'all') ps = ps.filter(p => p.type === state.category);
-    if(state.subcategory !== 'all') ps = ps.filter(p => subcategoryFor(p) === state.subcategory);
-    if(state.brand !== 'all') ps = ps.filter(p => p.brand === state.brand);
-
-    if(state.price !== 'all'){
-      const [min,max] = state.price.split('-').map(Number);
-      ps = ps.filter(p => Number(p.price) >= min && Number(p.price) <= max);
-    }
-
-    return ps;
-  };
-
-  const syncUrl = () => {
-    const q = new URLSearchParams();
-    if(state.audience !== 'all') q.set('audience',state.audience);
-    if(state.category !== 'all') q.set('type',state.category);
-    if(state.subcategory !== 'all') q.set('subcategory',state.subcategory);
-    if(state.brand !== 'all') q.set('brand',state.brand);
-    if(state.price !== 'all') q.set('price',state.price);
-    history.replaceState({},'', `shop.html${q.toString() ? '?' + q.toString() : ''}`);
-  };
-
-  const render = () => {
-    renderAudience();
-    renderCategories();
-    renderSubcategories();
-    renderBrands();
-    renderPrices();
-
-    const ps = filtered();
-    grid.innerHTML = ps.map(card).join('') ||
-      '<div class="empty-grid"><strong>Nessun prodotto in questa selezione.</strong><span>Prova un’altra categoria o guarda la selezione completa.</span></div>';
-
-    document.querySelector('#shopCount').textContent = String(ps.length).padStart(2,'0') + ' PIECES';
-    syncUrl();
-  };
-
-  document.querySelector('#shopAudience').addEventListener('click', ev => {
-    const b = ev.target.closest('[data-audience]');
-    if(!b) return;
-    state.audience = b.dataset.audience;
-    state.category = 'all';
-    state.subcategory = 'all';
-    state.brand = 'all';
+  $('#activeFilters').addEventListener('click',e=>{
+    const b=e.target.closest('[data-clear]');if(!b)return;
+    const x=b.dataset.clear;
+    if(x===state.category)state.category='all';
+    else if(x===state.subcategory)state.subcategory='all';
+    else if(x===state.brand)state.brand='all';
+    else state.price='all';
     render();
   });
 
-  document.querySelector('#shopCategories').addEventListener('click', ev => {
-    const b = ev.target.closest('[data-category]');
-    if(!b) return;
-    state.category = b.dataset.category;
-    state.subcategory = 'all';
-    state.brand = 'all';
-    render();
-  });
+  // Drawer
+  const drawer=$('#filterDrawer');
+  const open=()=>{drawer.classList.add('open');drawer.setAttribute('aria-hidden','false');document.body.classList.add('no-scroll')};
+  const close=()=>{drawer.classList.remove('open');drawer.setAttribute('aria-hidden','true');document.body.classList.remove('no-scroll')};
+  $('#openFilters').onclick=open;$('#closeFilters').onclick=close;$('#filterBackdrop').onclick=close;
+  $('#applyFilters').onclick=close;
+  $('#resetFilters').onclick=()=>{state.brand='all';state.price='all';render()};
 
-  document.querySelector('#shopSubcategories').addEventListener('click', ev => {
-    const b = ev.target.closest('[data-subcategory]');
-    if(!b) return;
-    state.subcategory = b.dataset.subcategory;
-    render();
+  // Quick add — intentionally stays inside Shop, without replacing the product page.
+  const quick=$('#quickAdd');
+  let quickProduct=null,quickSize=null;
+  function closeQuick(){quick.classList.remove('open');quick.setAttribute('aria-hidden','true');document.body.classList.remove('no-scroll')}
+  function openQuick(id){
+    quickProduct=products.find(p=>p.id===id);if(!quickProduct)return;
+    quickSize=null;
+    $('#quickImage').src=img(quickProduct);$('#quickImage').alt=quickProduct.name;
+    $('#quickBrand').textContent=quickProduct.brand;
+    $('#quickName').textContent=quickProduct.name;
+    $('#quickPrice').textContent=money(quickProduct);
+    $('#quickNote').textContent=quickProduct.selectionNote||'Selezionato per l’Online Edit Flip&Co.';
+    const sizes=(quickProduct.sizes||[]).filter(s=>!quickProduct.stock||quickProduct.stock[s]===undefined||Number(quickProduct.stock[s])>0);
+    $('#quickSizes').innerHTML=sizes.length?sizes.map(s=>`<button type="button" data-size="${esc(s)}">${esc(s)}</button>`).join(''):'<span class="v46-no-size">Disponibilità da confermare in store.</span>';
+    $('#quickSizeHint').textContent=sizes.length?'Seleziona una taglia':'Disponibilità su richiesta';
+    $('#quickAddButton').disabled=!sizes.length;
+    $('#quickProductLink').href=`product.html?id=${encodeURIComponent(id)}`;
+    quick.classList.add('open');quick.setAttribute('aria-hidden','false');document.body.classList.add('no-scroll');
+  }
+  $('#productGrid').addEventListener('click',e=>{
+    const b=e.target.closest('[data-quick]');if(!b)return;
+    e.preventDefault();e.stopPropagation();openQuick(b.dataset.quick);
   });
-
-  document.querySelector('#shopBrands').addEventListener('click', ev => {
-    const b = ev.target.closest('[data-brand]');
-    if(!b) return;
-    state.brand = b.dataset.brand;
-    render();
+  $('#quickSizes').addEventListener('click',e=>{
+    const b=e.target.closest('[data-size]');if(!b)return;
+    quickSize=b.dataset.size;
+    document.querySelectorAll('#quickSizes [data-size]').forEach(x=>x.classList.toggle('is-active',x===b));
+    $('#quickAddButton').disabled=false;
   });
-
-  document.querySelector('#shopPrices').addEventListener('click', ev => {
-    const b = ev.target.closest('[data-price]');
-    if(!b) return;
-    state.price = b.dataset.price;
-    render();
-  });
-
-  document.querySelector('#clearFilter').addEventListener('click', () => {
-    state = {audience:'all',category:'all',subcategory:'all',brand:'all',price:'all'};
-    history.replaceState({},'', 'shop.html');
-    render();
-  });
+  $('#quickAddButton').onclick=()=>{
+    if(!quickProduct||!quickSize)return;
+    FLIPCO_CART.add(quickProduct.id,quickSize,1);
+    closeQuick();
+    $('#cartBtn')?.click();
+  };
+  $('#quickClose').onclick=closeQuick;$('#quickBackdrop').onclick=closeQuick;
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')closeQuick()});
 
   render();
 })();
