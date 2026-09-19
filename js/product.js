@@ -30,3 +30,9 @@
  let selected='';document.querySelectorAll('.p29-size').forEach(b=>b.onclick=()=>{selected=b.dataset.size;document.querySelectorAll('.p29-size').forEach(x=>x.classList.remove('selected'));b.classList.add('selected');document.querySelector('#p29Add').disabled=false});
  document.querySelector('#p29Add')?.addEventListener('click',()=>{if(!selected)return;FLIPCO_CART.add(p.id,selected);document.querySelector('#p29Add').textContent='ADDED TO BAG ✓'});
 })();
+
+
+/* V47 — product visual state */
+document.addEventListener("DOMContentLoaded",()=>{
+  document.body.classList.add("flip-product-orange");
+});
