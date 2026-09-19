@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="description" content="Flip&Co Online Edit — Uomo, Donna, Kids. Sneakers, abbigliamento, borse e accessori selezionati a Cagliari.">
   <title>Shop — Flip&Co</title>
-  <link href="styles.css?v=54.3" rel="stylesheet">
+  <link href="styles.css?v=52.6" rel="stylesheet">
   <meta content="#F1EEE8" name="theme-color">
 
 <style id="flip-shop-v48-inline">
@@ -167,21 +167,6 @@
 .v46-product-link:hover{color:#f05a3c}
 
 </style>
-
-<style id="flip-shop-v541">
-/* FLIP V54.1 — SHOP COPY / VISUAL POLISH */
-.v46-hero-side p{max-width:440px}
-.v46-catalog-top h1{max-width:7ch}
-.v46-end h2{max-width:8ch}
-@media(max-width:760px){
-  .v46-hero-title{line-height:.78;letter-spacing:-.09em}
-  .v46-hero-side p{font-size:20px;line-height:1.12;max-width:34ch}
-  .v46-catalog-top h1{max-width:7ch;line-height:.82}
-  .v46-count-wrap small{line-height:1.15}
-  .v46-end h2{max-width:9ch;line-height:.8}
-}
-</style>
-
 </head>
 <body data-page="shop" class="flip-shop-page">
   <div id="siteHeader"></div>
@@ -199,23 +184,23 @@
           <i>ci piace.</i>
         </div>
         <div class="v46-hero-side">
-          <p>Il negozio cambia ogni giorno. Online portiamo solo una parte: pezzi che ci rappresentano, scelti e disponibili adesso. Per tutto il resto, passa in store.</p>
-          <a class="arrow" href="#catalogo">SCOPRI LA SELEZIONE ↓</a>
+          <p>Non tutto il negozio entra online. Qui trovi la nostra selezione: pochi pezzi, scelti bene.</p>
+          <a class="arrow" href="#catalogo">ENTRA NELLA SELEZIONE ↓</a>
         </div>
       </div>
 
       <div class="v46-worlds" id="worlds">
         <button type="button" class="is-active" data-audience="all">
-          <span>00</span><b>ALL</b><em>TUTTO ONLINE</em>
+          <span>00</span><b>ALL</b><em>TUTTA LA SELEZIONE</em>
         </button>
         <button type="button" data-audience="Uomo">
-          <span>01</span><b>UOMO</b><em>STREET / EVERYDAY</em>
+          <span>01</span><b>UOMO</b><em>EVERYDAY / STREET</em>
         </button>
         <button type="button" data-audience="Donna">
           <span>02</span><b>DONNA</b><em>STYLE / OBJECTS</em>
         </button>
         <button type="button" data-audience="Kids">
-          <span>03</span><b>KIDS</b><em>KIDS / BIG ENERGY</em>
+          <span>03</span><b>KIDS</b><em>SMALL / BIG ENERGY</em>
         </button>
       </div>
     </section>
@@ -224,11 +209,11 @@
       <div class="v46-catalog-top">
         <div>
           <span class="eyebrow">LA SELEZIONE</span>
-          <h1 id="catalogTitle">Quello che c’è.<br><i>Adesso.</i></h1>
+          <h1 id="catalogTitle">Tutto, per ora.</h1>
         </div>
         <div class="v46-count-wrap">
           <span id="shopCount">00</span>
-          <small>PEZZI ONLINE</small>
+          <small>PIECES ONLINE</small>
         </div>
       </div>
 
@@ -248,10 +233,10 @@
       <div class="v46-end">
         <div>
           <span class="eyebrow">ONLINE + STORE</span>
-          <h2>Visto online.<br><i>Provalo in store.</i></h2>
+          <h2>Hai trovato<br><i>il tuo pezzo?</i></h2>
         </div>
-        <p>Online vedi una selezione. In store trovi più scelta, più taglie e qualcuno che può aiutarti a trovare il resto.</p>
-        <a class="arrow" href="https://wa.me/393661087819" target="_blank" rel="noopener">CHIEDI SU WHATSAPP ↗</a>
+        <p>Online vedi una selezione. In negozio trovi più scelta, più taglie e qualcuno che ti aiuta a costruire il look.</p>
+        <a class="arrow" href="https://wa.me/393661087819" target="_blank" rel="noopener">CHIEDI DISPONIBILITÀ SU WHATSAPP ↗</a>
       </div>
     </section>
   </main>
@@ -260,7 +245,7 @@
     <div class="v46-filter-backdrop" id="filterBackdrop"></div>
     <div class="v46-filter-panel">
       <div class="v46-filter-head">
-        <span>RAFFINA LA SELEZIONE</span>
+        <span>FILTRA LA SELEZIONE</span>
         <button type="button" id="closeFilters">CHIUDI ×</button>
       </div>
 
@@ -276,7 +261,7 @@
 
       <div class="v46-filter-foot">
         <button type="button" id="resetFilters">RESET</button>
-        <button type="button" class="button dark" id="applyFilters">APPLICA I FILTRI</button>
+        <button type="button" class="button dark" id="applyFilters">VEDI LA SELEZIONE</button>
       </div>
     </div>
   </aside>
@@ -302,31 +287,9 @@
   <div id="siteFooter"></div>
   <div id="cartRoot"></div>
 
-  <script src="js/data.js?v=54.1"></script>
-  <script src="js/commerce.js?v=54.1"></script>
-  <script src="js/site.js?v=54.1"></script>
-  <script src="js/shop.js?v=54.1"></script>
-
-<script id="flip-v542-menu-look-fix">
-document.addEventListener('DOMContentLoaded', function(){
-  document.querySelectorAll('a').forEach(function(a){
-    if ((a.textContent || '').trim().toLowerCase().includes('ti facciamo il look')) {
-      a.setAttribute('href','index.html#look');
-    }
-  });
-});
-</script>
-
-
-<script id="flip-v543-menu-look-store-fix">
-document.addEventListener('DOMContentLoaded', function(){
-  document.querySelectorAll('a').forEach(function(a){
-    var t=(a.textContent||'').trim().toLowerCase();
-    if(t.includes('ti facciamo il look')) a.setAttribute('href','index.html#look');
-    if(t==='store' || (t.includes('store') && !t.includes('whatsapp'))) a.setAttribute('href','index.html#store');
-  });
-});
-</script>
-
+  <script src="js/data.js?v=52.6"></script>
+  <script src="js/commerce.js?v=52.6"></script>
+  <script src="js/site.js?v=55.0"></script>
+  <script src="js/shop.js?v=52.6"></script>
 </body>
 </html>
