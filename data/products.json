@@ -33,7 +33,7 @@
       "fit": "Unisex",
       "season": "FW26",
       "badge": "NEW",
-      "image": "https://nb.scene7.com/is/image/NB/u9060erc_nb_02_i?%24pdpflexf2%24=&hei=1200&wid=1200",
+      "image": "assets/editorial/product/new-balance-9060/hero.jpg",
       "source": "https://www.newbalance.it/it/pd/9060/U9060ERC-D-14.html",
       "type": "sneaker",
       "available": true,
@@ -41,8 +41,12 @@
       "description": "9060 in Mushroom / Arid Stone. Mesh e suede, proporzioni Y2K e ammortizzazione ABZORB / SBS.",
       "compareAt": null,
       "onlineEdit": true,
-      "selectionNote": "Selezionato per l'Online Edit Flip&Co.",
-      "audience": "Uomo"
+      "selectionNote": "Selezionato per l’Online Edit Flip&Co.",
+      "audience": "Uomo",
+      "gallery": [
+        "assets/editorial/product/new-balance-9060/hero.jpg",
+        "assets/editorial/product/new-balance-9060/side-profile.jpg"
+      ]
     },
     {
       "id": "NB9060-ALP",
