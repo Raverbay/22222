@@ -1349,3 +1349,40 @@ body,.flip29-home{font-family:var(--display);background:var(--paper);color:var(-
  .f51-pieces-nav{gap:12px;margin-top:20px}
  .f51-pieces-nav a{font-size:9px}
 }
+
+/* =========================================================
+   FLIP&CO V51.3 — WORLDS / MOBILE SWIPE
+   ========================================================= */
+.f31-worlds{padding:108px 0 132px;background:var(--paper);overflow:hidden}
+.f31-worlds .f31-campaign-head{grid-template-columns:1.15fr .72fr auto;gap:48px;align-items:end;margin:48px 0 52px}
+.f31-worlds .f31-campaign-head h2{font-size:clamp(68px,9vw,138px);line-height:.78}
+.f31-worlds .f31-campaign-head h2 em{color:var(--orange,#f05a3c)}
+.f31-worlds .f31-campaign-head p{max-width:350px}
+.f31-worlds .f31-campaign-grid{grid-template-columns:repeat(3,1fr);gap:12px}
+.f31-worlds .f31-campaign-card,
+.f31-worlds .f31-campaign-card.f31-wide{min-height:0;aspect-ratio:3/4}
+.f31-worlds .f31-campaign-card:after{background:linear-gradient(180deg,rgba(0,0,0,.02) 48%,rgba(0,0,0,.62) 100%)}
+.f31-worlds .f31-campaign-card img{filter:saturate(.92)}
+.f31-worlds .f31-campaign-card>span{top:18px;left:18px}
+.f31-worlds .f31-campaign-card>b{left:20px;bottom:20px;font-size:clamp(34px,4vw,58px);line-height:.9}
+.f31-worlds .f31-campaign-card>b em{font-family:var(--sans);font-size:.42em;color:var(--orange,#f05a3c);font-style:normal;margin-left:7px;vertical-align:middle}
+@media(max-width:900px){
+  .f31-worlds{padding:82px 0 100px}
+  .f31-worlds .f31-campaign-head{grid-template-columns:1fr;gap:22px;margin:36px 0 34px}
+  .f31-worlds .f31-campaign-head h2{font-size:clamp(64px,18vw,108px)}
+  .f31-worlds .f31-campaign-grid{
+    display:flex;overflow-x:auto;gap:10px;padding:0 0 12px;
+    scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;
+    scrollbar-width:none;touch-action:pan-x;
+  }
+  .f31-worlds .f31-campaign-grid::-webkit-scrollbar{display:none}
+  .f31-worlds .f31-campaign-card,
+  .f31-worlds .f31-campaign-card.f31-wide{
+    flex:0 0 84vw;aspect-ratio:3/4;min-height:0;scroll-snap-align:start;
+  }
+  .f31-worlds .f31-campaign-card>b{font-size:44px}
+}
+@media(max-width:520px){
+  .f31-worlds .f31-campaign-card,
+  .f31-worlds .f31-campaign-card.f31-wide{flex-basis:82vw}
+}
