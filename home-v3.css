@@ -1416,3 +1416,23 @@ body.flip29-home #siteFooter{
 body.flip29-home main{
   display:block!important;
 }
+
+/* FLIP V54 — PERSONAL EDIT MOBILE CENTER */
+@media (max-width:700px){
+  .f29-story > .f29-label{
+    padding-left:28px!important;
+    padding-right:28px!important;
+    box-sizing:border-box!important;
+  }
+  .f29-story > .f29-story-grid > .f29-story-copy{
+    padding-left:28px!important;
+    padding-right:28px!important;
+    box-sizing:border-box!important;
+    width:100%!important;
+  }
+  .f29-story > .f29-story-grid > .f29-story-copy h2,
+  .f29-story > .f29-story-grid > .f29-story-copy p,
+  .f29-story > .f29-story-grid > .f29-story-copy .f29-story-actions{
+    max-width:100%!important;
+  }
+}
