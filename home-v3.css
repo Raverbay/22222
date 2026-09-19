@@ -1296,15 +1296,18 @@ body,.flip29-home{font-family:var(--display);background:var(--paper);color:var(-
 }
 
 
-/* V51 — REAL PRODUCT PRESENCE / HOME */
+/* V51.1 — THE PIECES / HORIZONTAL PRODUCT SLIDER */
 .f51-home-pieces{padding:clamp(72px,9vw,132px) 0;background:var(--paper);overflow:hidden}
 .f51-pieces-head{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(280px,.85fr);gap:40px;align-items:end;margin-bottom:42px}
 .f51-pieces-head h2{margin:22px 0 0;font-size:clamp(54px,7.3vw,112px);line-height:.88;letter-spacing:-.065em;font-weight:600}
 .f51-pieces-head h2 em{font-family:var(--serif);font-weight:400;letter-spacing:-.035em}
 .f51-pieces-copy{max-width:390px;padding-bottom:6px}
 .f51-pieces-copy p{margin:0 0 22px;font-size:16px;line-height:1.5;color:var(--muted)}
-.f51-pieces-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
-.f51-piece{display:block;color:inherit;text-decoration:none;min-width:0}
+.f51-pieces-carousel{position:relative}
+.f51-pieces-viewport{overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none;-webkit-overflow-scrolling:touch;touch-action:pan-x}
+.f51-pieces-viewport::-webkit-scrollbar{display:none}
+.f51-pieces-grid{display:flex;gap:18px;width:max-content;padding:0 0 4px}
+.f51-piece{display:block;color:inherit;text-decoration:none;min-width:0;width:calc((min(100vw - 48px, 1280px) - 36px) / 3);scroll-snap-align:start}
 .f51-piece-media{position:relative;aspect-ratio:4/5;background:#e9e4db;overflow:hidden}
 .f51-piece-media img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .55s cubic-bezier(.2,.7,.2,1)}
 .f51-piece:hover .f51-piece-media img{transform:scale(1.035)}
@@ -1314,18 +1317,35 @@ body,.flip29-home{font-family:var(--display);background:var(--paper);color:var(-
 .f51-piece-info strong{font-size:15px;line-height:1.15;font-weight:600}
 .f51-piece-info span{font:12px var(--mono);white-space:nowrap}
 .f51-piece-arrow{font:15px var(--mono);opacity:.45;align-self:end;font-style:normal}
+.f51-pieces-arrow{position:absolute;z-index:3;top:calc(50% - 25px);width:50px;height:50px;border:1px solid rgba(12,12,11,.16);border-radius:50%;background:rgba(250,248,244,.94);color:var(--ink);display:grid;place-items:center;font:18px var(--mono);cursor:pointer;transition:.2s}
+.f51-pieces-arrow:hover{background:#f05a3c;color:#fff;border-color:#f05a3c}
+.f51-pieces-prev{left:-25px}
+.f51-pieces-next{right:-25px}
+.f51-pieces-nav{display:flex;align-items:center;gap:18px;margin-top:24px;font:10px var(--mono);letter-spacing:.09em;text-transform:uppercase}
+.f51-pieces-nav>span{min-width:48px}
+.f51-pieces-line{height:1px;background:rgba(12,12,11,.14);flex:1;position:relative;overflow:hidden}
+.f51-pieces-line span{display:block;height:100%;width:12.5%;background:#f05a3c;transition:width .25s ease}
+.f51-pieces-nav a{color:inherit;text-decoration:none;white-space:nowrap}
 @media(max-width:980px){
-  .f51-pieces-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 14px}
-  .f51-pieces-head{grid-template-columns:1fr 1fr}
+ .f51-pieces-head{grid-template-columns:1fr 1fr}
+ .f51-piece{width:calc((100vw - 72px) / 2.15)}
+ .f51-pieces-grid{gap:14px}
 }
 @media(max-width:640px){
-  .f51-home-pieces{padding:64px 0}
-  .f51-pieces-head{display:block;margin-bottom:30px}
-  .f51-pieces-head h2{font-size:clamp(50px,16vw,78px);margin-top:16px}
-  .f51-pieces-copy{margin-top:24px}
-  .f51-pieces-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:25px 10px}
-  .f51-piece-media{aspect-ratio:4/5}
-  .f51-piece-info{padding-top:10px;gap:6px 8px}
-  .f51-piece-info strong{font-size:13px}
-  .f51-piece-info span{font-size:10px}
+ .f51-home-pieces{padding:64px 0}
+ .f51-pieces-head{display:block;margin-bottom:30px}
+ .f51-pieces-head h2{font-size:clamp(50px,16vw,78px);margin-top:16px}
+ .f51-pieces-copy{margin-top:24px}
+ .f51-pieces-viewport{margin-right:-28px}
+ .f51-pieces-grid{gap:12px;padding-right:28px}
+ .f51-piece{width:78vw;scroll-snap-align:start}
+ .f51-piece-media{aspect-ratio:4/5}
+ .f51-piece-info{padding-top:10px;gap:6px 8px}
+ .f51-piece-info strong{font-size:14px}
+ .f51-piece-info span{font-size:10px}
+ .f51-pieces-arrow{top:auto;bottom:92px;width:40px;height:40px}
+ .f51-pieces-prev{left:8px}
+ .f51-pieces-next{right:36px}
+ .f51-pieces-nav{gap:12px;margin-top:20px}
+ .f51-pieces-nav a{font-size:9px}
 }
