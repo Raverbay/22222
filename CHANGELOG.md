@@ -1,3 +1,8 @@
+## V37 — Production Polish
+- Removed visible demo labels from customer-facing editorial copy.
+- Preserved V36 navigation, commerce and data architecture.
+- Added final production QA checklist.
+
 # Changelog
 
 ## Fresh Start V1 — 2026-09-18
