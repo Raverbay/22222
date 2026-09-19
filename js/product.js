@@ -31,8 +31,7 @@
  document.querySelector('#p29Add')?.addEventListener('click',()=>{if(!selected)return;FLIPCO_CART.add(p.id,selected);document.querySelector('#p29Add').textContent='ADDED TO BAG ✓'});
 })();
 
-
-/* V47 — product visual state */
+/* V49 — visual state only; commerce logic remains untouched. */
 document.addEventListener("DOMContentLoaded",()=>{
-  document.body.classList.add("flip-product-orange");
+  document.body.classList.add("flip-product-v49");
 });
