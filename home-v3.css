@@ -474,3 +474,61 @@ body,.flip29-home{font-family:var(--display);background:var(--paper);color:var(-
 @media(prefers-reduced-motion:reduce){
   .f29-showcase-image img{transition:opacity .2s ease!important}
 }
+
+/* =========================================================
+   V39 — HERO OVERLAY CLEANUP
+   The showcase is a background gallery; its metadata must not
+   compete with the hero's primary editorial typography.
+   ========================================================= */
+.f29-showcase-top{display:none!important}
+
+@media(max-width:900px){
+  /* Keep the hero hierarchy clean on narrow screens. */
+  .f29-hero-left{
+    min-height:100%!important;
+    padding:22px 28px 92px!important;
+  }
+  .f29-overline{
+    position:relative!important;
+    z-index:8!important;
+  }
+  .f29-hero-title{
+    margin-top:7vh!important;
+  }
+  .f29-hero-meta,
+  .f32-scroll,
+  .f29-showcase-caption{
+    display:none!important;
+  }
+  .f29-hero-actions{
+    margin-top:26px!important;
+  }
+  .f29-showcase-controls{
+    bottom:22px!important;
+    left:22px!important;
+    right:22px!important;
+    z-index:10!important;
+  }
+}
+
+@media(max-width:560px){
+  .f29-hero-left{
+    padding:20px 28px 86px!important;
+  }
+  .f29-hero-title{
+    margin-top:7vh!important;
+    font-size:clamp(56px,15.8vw,92px)!important;
+  }
+  .f29-hero-lead{
+    margin-top:22px!important;
+    max-width:360px!important;
+  }
+  .f29-hero-actions{
+    margin-top:22px!important;
+  }
+  .f29-showcase-controls{
+    bottom:18px!important;
+    left:20px!important;
+    right:20px!important;
+  }
+}
