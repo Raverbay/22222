@@ -604,3 +604,304 @@ body,.flip29-home{font-family:var(--display);background:var(--paper);color:var(-
  .f31-campaign:before,.f32-journal:before,.f29-intro:before,.f29-tiles:before,.f29-story:before{left:20px}
  .f29-close h2{letter-spacing:-.075em}
 }
+
+
+/* =========================================================
+   V42 — FLIP SIGNATURE
+   A bespoke composition, not a dressed-up template.
+   ========================================================= */
+:root{
+  --flip-blue:#3157ff;
+  --flip-blue-dark:#203bc2;
+  --flip-yellow:#f4f0df;
+  --flip-black:#0e0f10;
+}
+
+/* HERO — full bleed image + type as one composition */
+.f29-hero{
+  min-height:calc(100svh - 72px);
+  display:block!important;
+  position:relative;
+  overflow:hidden;
+  background:#111!important;
+  color:#fff;
+}
+.f29-showcase{
+  position:absolute!important;
+  inset:0!important;
+  min-height:100%!important;
+  width:100%!important;
+  z-index:1;
+  background:#111!important;
+}
+.f29-showcase-image:after{
+  background:
+    linear-gradient(90deg,rgba(0,0,0,.76) 0%,rgba(0,0,0,.42) 34%,rgba(0,0,0,.08) 67%,rgba(0,0,0,.24) 100%),
+    linear-gradient(0deg,rgba(0,0,0,.55) 0%,transparent 34%,rgba(0,0,0,.12) 100%)!important;
+}
+.f29-showcase-image img{
+  filter:saturate(.95) contrast(1.03)!important;
+  transform:scale(1.015);
+}
+.f29-hero-left{
+  position:relative;
+  z-index:8;
+  min-height:calc(100svh - 72px);
+  padding:24px clamp(20px,4vw,58px) 24px!important;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  pointer-events:none;
+}
+.f29-hero-left>*{pointer-events:auto}
+.f29-overline{
+  color:#fff!important;
+  text-shadow:0 1px 10px rgba(0,0,0,.28);
+}
+.f29-overline span:first-child:before{background:var(--flip-blue)}
+.f29-hero-title{
+  font-size:clamp(88px,13.2vw,218px)!important;
+  line-height:.69!important;
+  letter-spacing:-.105em!important;
+  margin-top:0!important;
+  width:min(850px,76vw);
+  text-shadow:0 4px 28px rgba(0,0,0,.12);
+}
+.f29-hero-title span:nth-child(2){margin-left:.12em!important}
+.f29-hero-title em{
+  color:var(--flip-blue)!important;
+  -webkit-text-stroke:0;
+  transform:translate(7%,.02em)!important;
+  text-shadow:none;
+}
+.f29-hero-lead{
+  color:#fff!important;
+  max-width:500px!important;
+  font-size:clamp(17px,1.6vw,22px)!important;
+  text-shadow:0 1px 12px rgba(0,0,0,.25);
+}
+.f29-btn{
+  background:var(--flip-blue)!important;
+  border-color:var(--flip-blue)!important;
+  color:#fff!important;
+  min-width:205px;
+}
+.f29-btn:hover{
+  background:#fff!important;
+  border-color:#fff!important;
+  color:#111!important;
+  transform:translateY(-2px)!important;
+}
+.f29-textlink{
+  color:#fff!important;
+  border-bottom-color:var(--flip-blue)!important;
+}
+.f29-hero-meta{
+  color:#fff!important;
+  border-top-color:rgba(255,255,255,.45)!important;
+  text-shadow:0 1px 10px rgba(0,0,0,.3);
+}
+.f29-showcase-top{
+  z-index:10!important;
+  padding:20px clamp(20px,4vw,58px)!important;
+}
+.f29-showcase-top span:first-child{color:var(--flip-blue)}
+.f29-showcase-caption{
+  z-index:10!important;
+  left:clamp(20px,4vw,58px)!important;
+  right:clamp(20px,4vw,58px)!important;
+}
+.f29-showcase-controls{
+  z-index:12!important;
+}
+.f29-showcase-controls i.active{
+  background:var(--flip-blue)!important;
+  border-color:var(--flip-blue)!important;
+}
+.f29-showcase:before{
+  content:"CAGLIARI / VIA ITALIA 22"!important;
+  left:auto!important;
+  right:20px!important;
+  top:50%!important;
+  transform:translateY(-50%) rotate(90deg)!important;
+  transform-origin:right center!important;
+  opacity:.7!important;
+}
+
+/* The ticker becomes a brand device */
+.f29-ticker{
+  background:var(--flip-blue)!important;
+  color:#fff!important;
+  height:54px!important;
+  display:flex!important;
+  align-items:center!important;
+}
+.f29-ticker div{
+  animation-duration:24s!important;
+  letter-spacing:.02em!important;
+}
+.f29-ticker b{color:#fff!important}
+
+/* Section rhythm: large interruptions, not repeated cards */
+.f31-campaign{
+  background:var(--flip-yellow);
+  padding-top:clamp(90px,11vw,170px)!important;
+}
+.f31-campaign-head h2{
+  font-size:clamp(82px,12vw,190px)!important;
+  line-height:.67!important;
+}
+.f31-campaign-head h2 em{color:var(--flip-blue)!important}
+.f31-campaign-grid{
+  grid-template-columns:1.18fr .82fr!important;
+  gap:18px!important;
+}
+.f31-campaign-card.f31-wide{
+  grid-row:span 2;
+  min-height:780px;
+}
+.f31-campaign-card:not(.f31-wide){
+  min-height:380px;
+}
+
+/* Journal: one oversized statement */
+.f32-journal{
+  padding-top:clamp(110px,15vw,220px)!important;
+}
+.f32-journal-head h2{
+  font-size:clamp(76px,12vw,185px)!important;
+}
+.f32-journal-head h2 em{color:var(--flip-blue)!important}
+
+/* Method band: make it feel like a manifesto, not service cards */
+.f32-service-band{
+  background:var(--flip-black)!important;
+}
+.f32-service-intro h2 em{color:var(--flip-blue)!important}
+.f32-service-grid{
+  border-top-color:rgba(255,255,255,.2)!important;
+}
+.f32-service-grid>div{
+  border-right-color:rgba(255,255,255,.2)!important;
+}
+.f32-service-grid b{color:var(--flip-blue)!important}
+
+/* Point of view: blue marker */
+.f29-intro-grid h2 em{color:var(--flip-blue)!important}
+
+/* Finder */
+.f29-finder{
+  background:var(--flip-blue)!important;
+}
+.f29-finder .f29-label span:first-child{color:#fff!important}
+.f29-finder-ui button{
+  border-color:rgba(255,255,255,.35)!important;
+}
+.f29-finder-ui button:hover{
+  background:#fff!important;
+  color:var(--flip-blue)!important;
+  border-color:#fff!important;
+}
+.f29-finder-ui button.active{
+  background:#fff!important;
+  color:var(--flip-blue)!important;
+  border-color:#fff!important;
+}
+
+/* Brand wall */
+.f29-brand-wall{background:#111!important;color:#fff!important}
+.f29-brand-wall .f29-label span{color:#fff!important}
+.f29-brand-wall .f29-label span:first-child{color:var(--flip-blue)!important}
+.f29-brand-intro h2 em{color:var(--flip-blue)!important}
+.f29-marquee{
+  border-color:rgba(255,255,255,.22)!important;
+}
+
+/* Store */
+.f29-story-image:after{
+  background:var(--flip-blue)!important;
+}
+.f29-story-copy h2 em{color:var(--flip-blue)!important}
+.f29-story-copy .f29-btn-dark{
+  background:var(--flip-blue)!important;
+  border-color:var(--flip-blue)!important;
+}
+
+/* Closing signature */
+.f29-close{
+  background:var(--flip-blue)!important;
+}
+.f29-close h2 em{color:#111!important}
+.f29-close .f29-btn-light{
+  background:#111!important;
+  color:#fff!important;
+  border-color:#111!important;
+}
+
+/* Footer */
+.footer{border-top:4px solid var(--flip-blue)!important}
+.footer small{color:var(--flip-blue)!important}
+.footer a:hover{color:var(--flip-blue)!important}
+
+/* Mobile is intentionally full-bleed too */
+@media(max-width:800px){
+  .f29-hero{
+    min-height:calc(100svh - 72px)!important;
+  }
+  .f29-showcase{
+    min-height:100%!important;
+  }
+  .f29-showcase-top{
+    padding:14px 18px!important;
+  }
+  .f29-showcase-caption{
+    display:none!important;
+  }
+  .f29-hero-left{
+    min-height:calc(100svh - 72px)!important;
+    padding:18px 20px 20px!important;
+  }
+  .f29-hero-title{
+    font-size:clamp(66px,19vw,112px)!important;
+    width:94vw!important;
+    line-height:.7!important;
+  }
+  .f29-hero-title span:nth-child(2){
+    margin-left:.06em!important;
+  }
+  .f29-hero-title em{
+    transform:translateX(2%)!important;
+  }
+  .f29-hero-lead{
+    max-width:88%!important;
+    font-size:16px!important;
+  }
+  .f29-hero-actions{
+    gap:18px!important;
+  }
+  .f29-btn{
+    min-width:0!important;
+  }
+  .f29-hero-meta{
+    font-size:8px!important;
+  }
+  .f29-showcase:before{
+    display:none!important;
+  }
+  .f31-campaign{
+    padding-top:80px!important;
+  }
+  .f31-campaign-grid{
+    grid-template-columns:1fr!important;
+  }
+  .f31-campaign-card.f31-wide{
+    grid-row:auto;
+    min-height:118vw;
+  }
+  .f31-campaign-card:not(.f31-wide){
+    min-height:80vw;
+  }
+  .f29-ticker{
+    height:48px!important;
+  }
+}
