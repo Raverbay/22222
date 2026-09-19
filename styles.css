@@ -1201,3 +1201,35 @@ body[data-page="product"] .purchase-panel .label{
  .pdp-v50-related{padding:60px var(--pad) 90px}
  .pdp-v50-related-grid{grid-template-columns:repeat(2,1fr);gap:16px}
 }
+
+/* V51.6 — FLIP ORANGE HEADER */
+.header{
+  background:rgba(241,238,232,.18)!important;
+  border-bottom-color:rgba(0,0,0,.18)!important;
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+  transition:background .35s ease,border-color .35s ease,box-shadow .35s ease;
+}
+.header .brandmark img{filter:brightness(0)!important}
+.header .menu-btn i{background:#080808!important}
+.header .icon svg,.header .bag svg{stroke:#080808!important}
+.header.is-scrolled{
+  background:#f05a3c!important;
+  border-bottom-color:rgba(0,0,0,.16)!important;
+  box-shadow:0 8px 28px rgba(0,0,0,.08);
+}
+.utility{background:#f05a3c!important;color:#080808!important}
+.mega,.search{background:#f05a3c!important;color:#080808!important;border-color:rgba(0,0,0,.18)!important}
+.mega a,.mega small,.mega-note,.mega-note p,
+.search-inner input,.search-inner input::placeholder{color:#080808!important}
+.overlay{background:rgba(0,0,0,.48)}
+@media(max-width:900px){
+  .utility{display:none}
+  .header{
+    position:fixed;top:0;left:0;right:0;z-index:80;height:74px;
+    background:rgba(241,238,232,.10)!important;
+    border-bottom-color:rgba(0,0,0,.14)!important;
+  }
+  .header.is-scrolled{background:#f05a3c!important}
+  .mega,.search{top:74px}
+}
