@@ -1390,3 +1390,29 @@ body,.flip29-home{font-family:var(--display);background:var(--paper);color:var(-
   .f31-worlds .f31-campaign-card,
   .f31-worlds .f31-campaign-card.f31-wide{flex-basis:82vw}
 }
+
+
+/* =========================================================
+   FLIP&CO V53.4 — VIEWPORT WIDTH NORMALIZATION
+   Prevent accidental width constraints on the home shell.
+   ========================================================= */
+html,body{
+  width:100%!important;
+  max-width:none!important;
+  min-width:0!important;
+  margin:0!important;
+  overflow-x:hidden!important;
+}
+body.flip29-home,
+body.flip29-home main,
+body.flip29-home section,
+body.flip29-home #siteHeader,
+body.flip29-home #siteFooter{
+  width:100%!important;
+  max-width:none!important;
+  min-width:0!important;
+  box-sizing:border-box!important;
+}
+body.flip29-home main{
+  display:block!important;
+}
