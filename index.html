@@ -73,6 +73,7 @@ body.flip29-home > main > .f29-ticker{
 
 <section class="f29-finder" id="finder"><div class="wrap"><div class="f29-label f29-label-light"><span>03 / FLIP FINDER</span><span>YOUR NEXT MOVE</span></div><div class="f29-finder-grid"><div><p class="f29-mini">NO ENDLESS SCROLLING.</p><h2>Dimmi cosa<br/><em>ti va.</em></h2><p>Per chi. E cosa cerchi. Al resto pensiamo noi.</p></div><div class="f29-finder-ui"><div class="f29-fstep"><span>01 / PER CHI?</span><div data-finder="audience"><button data-value="Uomo">UOMO</button><button data-value="Donna">DONNA</button><button data-value="Kids">KIDS</button></div></div><div class="f29-fstep"><span>02 / COSA CERCHI?</span><div data-finder="need"><button data-value="sneaker">SNEAKERS</button><button data-value="apparel">CAPI</button><button data-value="accessory">ACCESSORI</button><button data-value="all">SORPRENDETEMI</button></div></div></div></div><div aria-live="polite" class="f29-result" id="finderResult"><div class="f29-result-head"><small>0 / 2</small><strong>Completa le due scelte.</strong></div><div class="f29-finder-selection" id="finderSelection"></div></div></div></section>
 
+<section class="f29-story wrap" id="look"><div class="f29-label"><span>04 / PERSONAL EDIT</span><span>HUMAN SERVICE</span></div><div class="f29-story-grid"><div class="f29-story-image"><span class="f31-anchor" id="store"></span><img alt="Flip&amp;Co store Cagliari" loading="lazy" src="assets/store-entrance.jpg"/><span>VIA ITALIA 22 / CAGLIARI</span></div><div class="f29-story-copy"><p class="f29-mini">THE FULL EXPERIENCE</p><h2>Tu porta<br/>l'idea.<br/><em>Al look pensiamo noi.</em></h2><p>Vieni in store, scrivici su WhatsApp oppure lasciati sorprendere. Ti chiediamo occasione, stile e budget. Poi selezioniamo.</p><div class="f29-story-actions"><a class="f29-btn f29-btn-dark" href="https://wa.me/393661087819?text=Ciao%20Flip%26Co%2C%20vorrei%20un%20consiglio%20per%20un%20look." rel="noopener" target="_blank">TALK TO US ↗</a><a class="f29-underlink" href="https://www.google.com/maps/search/?api=1&amp;query=Flip%26Co%20Via%20Italia%2022%20Cagliari" rel="noopener" target="_blank">OPEN STORE ↗</a></div></div></div></section>
 <section class="flip-lookbook" id="shop-the-look" aria-labelledby="shopLookTitle">
   <div class="wrap">
     <div class="flip-lookbook-head">
@@ -173,9 +174,20 @@ body.flip29-home > main > .f29-ticker{
     </div>
   </div>
 </section>
-<section class="f29-story wrap" id="look"><div class="f29-label"><span>07 / PERSONAL EDIT</span><span>HUMAN SERVICE</span></div><div class="f29-story-grid"><div class="f29-story-image"><span class="f31-anchor" id="store"></span><img alt="Flip&amp;Co store Cagliari" loading="lazy" src="assets/store-entrance.jpg"/><span>VIA ITALIA 22 / CAGLIARI</span></div><div class="f29-story-copy"><p class="f29-mini">THE FULL EXPERIENCE</p><h2>Tu porta<br/>l'idea.<br/><em>Al look pensiamo noi.</em></h2><p>Vieni in store, scrivici su WhatsApp oppure lasciati sorprendere. Ti chiediamo occasione, stile e budget. Poi selezioniamo.</p><div class="f29-story-actions"><a class="f29-btn f29-btn-dark" href="https://wa.me/393661087819?text=Ciao%20Flip%26Co%2C%20vorrei%20un%20consiglio%20per%20un%20look." rel="noopener" target="_blank">TALK TO US ↗</a><a class="f29-underlink" href="https://www.google.com/maps/search/?api=1&amp;query=Flip%26Co%20Via%20Italia%2022%20Cagliari" rel="noopener" target="_blank">OPEN STORE ↗</a></div></div></div></section>
-<section class="f29-close"><div class="wrap"><div class="f29-close-top"><span>08 / FLIP&amp;CO</span><span>MADE IN CAGLIARI</span></div><h2>Online scegli.<br/><em>In store succede.</em></h2><a class="f29-btn f29-btn-light" href="shop.html">SHOP THE EDIT ↗</a></div></section>
+
+<section class="f29-close"><div class="wrap"><div class="f29-close-top"><span>07 / FLIP&amp;CO</span><span>MADE IN CAGLIARI</span></div><h2>Online scegli.<br/><em>In store succede.</em></h2><a class="f29-btn f29-btn-light" href="shop.html">SHOP THE EDIT ↗</a></div></section>
 </main>
 <div id="siteFooter"></div><div id="cartRoot"></div>
-<script src="js/data.js?v=52.6"></script><script src="js/commerce.js?v=52.6"></script><script src="js/site.js?v=53.0"></script><script src="js/home.js?v=53.7"></script>
+<script src="js/data.js?v=52.6"></script><script src="js/commerce.js?v=52.6"></script><script src="js/site.js?v=53.0"></script><script src="js/home.js?v=53.9"></script>
+
+<script id="flip-v539-personal-order-fix">
+document.addEventListener('DOMContentLoaded',function(){
+  var personal=document.getElementById('look');
+  var shop=document.getElementById('shop-the-look');
+  if(personal && shop && personal.parentNode===shop.parentNode){
+    shop.parentNode.insertBefore(personal,shop);
+  }
+});
+</script>
+
 </body></html>
