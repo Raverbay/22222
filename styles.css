@@ -947,3 +947,106 @@ body{font-family:'Instrument Sans',Arial,sans-serif!important;background:var(--p
 .mega a,.mega button,.search input,.search-row{pointer-events:auto!important}
 
 .no-scroll .header{transform:translateY(0)!important}
+
+
+/* =========================================================
+   FLIP&CO V40 — COMPACT HORIZONTAL FOOTER
+   ========================================================= */
+.footer{
+  padding:72px var(--pad) 22px!important;
+  overflow:hidden;
+}
+.footer-main{
+  max-width:var(--max);
+  margin:auto;
+  display:grid!important;
+  grid-template-columns:minmax(220px,1.7fr) repeat(3,minmax(120px,1fr))!important;
+  gap:clamp(24px,4vw,72px)!important;
+  padding-bottom:58px!important;
+  align-items:start;
+}
+.footer-brand{
+  grid-column:auto!important;
+}
+.footer-brand img{
+  width:138px!important;
+  max-width:100%;
+}
+.footer-brand p{
+  max-width:210px;
+  margin-top:18px!important;
+}
+.footer-main>div:not(.footer-brand){
+  min-width:0;
+}
+.footer-main>div:not(.footer-brand) a,
+.footer-main>div:not(.footer-brand) span{
+  margin-bottom:9px!important;
+}
+.footer-bottom{
+  max-width:var(--max);
+  margin:auto;
+}
+
+/* Mobile: compact two-column footer instead of a long vertical stack */
+@media(max-width:560px){
+  .footer{
+    padding:52px 16px 18px!important;
+  }
+  .footer-main{
+    grid-template-columns:1fr 1fr!important;
+    gap:38px 28px!important;
+    padding-bottom:42px!important;
+  }
+  .footer-brand{
+    grid-column:1/-1!important;
+    display:grid;
+    grid-template-columns:minmax(120px,1fr) minmax(120px,1fr);
+    gap:24px;
+    align-items:end;
+  }
+  .footer-brand p{
+    margin:0!important;
+    max-width:160px;
+    justify-self:end;
+    font-size:11px;
+  }
+  .footer small{
+    margin-bottom:14px!important;
+  }
+  .footer a,.footer span{
+    font-size:10px!important;
+    line-height:1.25;
+  }
+  .footer-main>div:nth-child(4){
+    grid-column:1/-1;
+    border-top:1px solid rgba(255,255,255,.14);
+    padding-top:28px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:0 24px;
+  }
+  .footer-main>div:nth-child(4) small{
+    grid-column:1/-1;
+  }
+  .footer-main>div:nth-child(4) span:first-of-type{
+    grid-column:1;
+  }
+  .footer-main>div:nth-child(4) span:nth-of-type(2){
+    grid-column:2;
+  }
+  .footer-main>div:nth-child(4) a{
+    grid-column:auto;
+  }
+  .footer-bottom{
+    grid-template-columns:1fr 1fr 1fr!important;
+    gap:8px!important;
+    align-items:start;
+  }
+  .footer-bottom span{
+    font-size:7px!important;
+    white-space:nowrap;
+  }
+  .footer-bottom span:nth-child(2){text-align:center!important}
+  .footer-bottom span:last-child{text-align:right!important}
+}
