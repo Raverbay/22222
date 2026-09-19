@@ -10,7 +10,18 @@ async function boot(){
  const curated=['NB9060-ERC','FLI-GCDS-BAND-MAN','DSQ2-PUFF-KIDS','FLI-PINKO-LOVE-BAG'].map(id=>products.find(p=>p.id===id)).filter(Boolean).filter(live);
  const card=(p,i)=>`<a class="f29-product-card" href="product.html?id=${encodeURIComponent(p.id)}"><div class="f29-product-image">${img(p)}</div><div class="f29-product-meta"><small>${esc(p.brand)} · ${esc(p.category)}</small><b>${esc(p.name)}</b><span>${p.compareAt&&Number(p.compareAt)>Number(p.price)?`<del>${FLIPCO.money(p.compareAt)}</del> `:''}${FLIPCO.money(p.price)}</span><div class="f29-product-status">${esc(p.badge||'SELECTED')}</div></div></a>`;
  const render=arr=>{if(grid)grid.innerHTML=arr.map(card).join('');if(count)count.textContent=`${String(arr.length).padStart(2,'0')} PIECES / CURATED`};render(curated);
- const homePieces=document.querySelector('#homePiecesGrid');
+ 
+ const showcaseGrid=document.querySelector('#flipShowcaseGrid');
+ const showcaseCount=document.querySelector('#flipShowcaseCount');
+ const showcaseIds=['NB9060-ERC','FLI-GCDS-BAND-MAN','BARROW-TEE-01','MOSCHINO-TEDDY-TEE','FLI-940-MLB-YANKEES'];
+ const showcaseData=showcaseIds.map(id=>products.find(p=>p.id===id)).filter(Boolean).filter(live);
+ const showcaseCard=p=>`<a class="f52-showcase-card" href="product.html?id=${encodeURIComponent(p.id)}"><div class="f52-showcase-media">${img(p)}${p.badge?`<span class="f52-showcase-badge">${esc(p.badge)}</span>`:''}</div><div class="f52-showcase-meta"><small>${esc(p.brand)} · ${esc(p.category)}</small><strong>${esc(p.name)}</strong><span>${p.compareAt&&Number(p.compareAt)>Number(p.price)?`<del>${FLIPCO.money(p.compareAt)}</del> `:''}${FLIPCO.money(p.price)}</span></div></a>`;
+ if(showcaseGrid){
+  showcaseGrid.innerHTML=showcaseData.map(showcaseCard).join('');
+  if(showcaseCount) showcaseCount.textContent=`01 / ${String(showcaseData.length).padStart(2,'0')}`;
+ }
+
+const homePieces=document.querySelector('#homePiecesGrid');
  const homePieceIds=['NB9060-ERC','NB9060-ALP','BARROW-TEE-01','BARROW-HOODIE-01','BARROW-DENIM-01','MOSCHINO-TEDDY-TEE','DSQ2-JEANS-KIDS','FLI-940-MLB-YANKEES'];
  const pieceCard=p=>`<a class="f51-piece" href="product.html?id=${encodeURIComponent(p.id)}"><div class="f51-piece-media">${img(p)}${p.badge?`<span class="f51-piece-badge">${esc(p.badge)}</span>`:''}</div><div class="f51-piece-info"><small>${esc(p.brand)} · ${esc(p.category)}</small><strong>${esc(p.name)}</strong><span>${p.compareAt&&Number(p.compareAt)>Number(p.price)?`<del>${FLIPCO.money(p.compareAt)}</del> `:''}${FLIPCO.money(p.price)}</span><i class="f51-piece-arrow">↗</i></div></a>`;
  const homePiecesData=homePieceIds.map(id=>products.find(p=>p.id===id)).filter(Boolean).filter(live);
