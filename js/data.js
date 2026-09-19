@@ -8,7 +8,7 @@ FLIPCO._cache = null;
 FLIPCO.load = async () => {
   if (FLIPCO._cache) return FLIPCO._cache;
   try {
-    const response = await fetch('data/products.json?v=36', { cache: 'no-store' });
+    const response = await fetch('data/products.json?v=52.6', { cache: 'no-store' });
     if (!response.ok) throw new Error(`Products HTTP ${response.status}`);
     const data = await response.json();
     FLIPCO._cache = data.products || [];
