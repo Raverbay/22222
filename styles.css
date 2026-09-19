@@ -1233,3 +1233,41 @@ body[data-page="product"] .purchase-panel .label{
   .header.is-scrolled{background:#f05a3c!important}
   .mega,.search{top:74px}
 }
+
+
+/* V51.9 — HEADER REAL OVERLAY / FLIP ORANGE ON SCROLL */
+.header{
+  position:absolute!important;
+  top:0!important;
+  left:0!important;
+  right:0!important;
+  width:100%!important;
+  z-index:1000!important;
+  background:transparent!important;
+  border-bottom-color:rgba(0,0,0,.14)!important;
+  box-shadow:none!important;
+}
+.header.is-scrolled{
+  position:fixed!important;
+  top:0!important;
+  background:#f05a3c!important;
+  border-bottom-color:rgba(0,0,0,.16)!important;
+  box-shadow:0 8px 28px rgba(0,0,0,.08)!important;
+}
+.header.is-scrolled .brandmark img{filter:brightness(0)!important}
+.header.is-scrolled .menu-btn i{background:#080808!important}
+.header.is-scrolled .icon svg,.header.is-scrolled .bag svg{stroke:#080808!important}
+
+@media(max-width:900px){
+  .header{
+    position:absolute!important;
+    top:0!important;
+    background:transparent!important;
+    border-bottom-color:rgba(255,255,255,.22)!important;
+  }
+  .header.is-scrolled{
+    position:fixed!important;
+    background:#f05a3c!important;
+    border-bottom-color:rgba(0,0,0,.16)!important;
+  }
+}
