@@ -1271,3 +1271,23 @@ body[data-page="product"] .purchase-panel .label{
     border-bottom-color:rgba(0,0,0,.16)!important;
   }
 }
+
+/* V52 — Finder result mobile containment */
+.f29-finder .f29-result{box-sizing:border-box;max-width:100%;overflow:hidden}
+.f29-finder .f29-finder-selection{width:100%;max-width:100%;overflow:hidden}
+.f29-finder .f29-finder-picked{width:100%;max-width:100%;box-sizing:border-box}
+.f29-finder .f29-product-card{min-width:0;max-width:100%;box-sizing:border-box;overflow:hidden}
+.f29-finder .f29-product-image{width:100%;max-width:100%;overflow:hidden}
+.f29-finder .f29-product-image img{display:block;width:100%;max-width:100%;height:100%;object-fit:cover}
+@media(max-width:900px){
+  .f29-finder .f29-result{margin-left:0!important;margin-right:0!important;padding-left:0!important;padding-right:0!important;width:100%!important;max-width:100%!important}
+  .f29-finder .f29-result-head{width:100%;max-width:100%;box-sizing:border-box}
+  .f29-finder .f29-result-head strong{max-width:100%;overflow-wrap:anywhere}
+  .f29-finder .f29-finder-picked{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;align-items:start}
+  .f29-finder .f29-finder-picked .f29-product-card:nth-child(2),
+  .f29-finder .f29-finder-picked .f29-product-card:nth-child(4){margin-top:0!important}
+  .f29-finder .f29-product-meta{min-width:0}
+  .f29-finder .f29-product-meta b,
+  .f29-finder .f29-product-meta small,
+  .f29-finder .f29-product-meta span{max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+}
