@@ -1549,3 +1549,32 @@ body,.flip29-home{font-family:var(--display);background:var(--paper);color:var(-
   .f52-showcase-card{width:calc(78vw)}
   .f52-showcase-foot{margin-top:24px}
 }
+
+
+/* =========================================================
+   F53.1 SHOP THE LOOK — NATIVE HOTSPOTS
+   The editorial images already contain their own + markers.
+   Keep the HTML buttons as invisible click targets so the
+   baked markers remain the only visible hotspots.
+   ========================================================= */
+.flip-look-image .flip-hotspot{
+  width:46px;
+  height:46px;
+  border:0;
+  border-radius:50%;
+  background:transparent;
+  box-shadow:none;
+  opacity:0;
+  color:transparent;
+  transform:translate(-50%,-50%);
+}
+.flip-look-image .flip-hotspot:after{
+  display:none;
+}
+.flip-look-image .flip-hotspot:hover,
+.flip-look-image .flip-hotspot:focus-visible{
+  opacity:0;
+  box-shadow:none;
+  transform:translate(-50%,-50%);
+  outline:0;
+}
